@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SidebarOverlay"
-  s.version      = "1.0"
+  s.version      = "1.0.0"
   s.summary      = "Yet another implementation of sidebar menu, but here your menu appears over the top view controller."
   
   s.description  = "Yet another implementation of sidebar menu, but here your menu appears over the top view controller. You questions and pull requests are wolcome."
