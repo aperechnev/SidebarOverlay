@@ -21,6 +21,25 @@ public protocol SOContainerViewControllerDelegate {
 }
 
 
+public extension UIViewController {
+    
+    func so_container() -> SOContainerViewController? {
+        var parentVC: UIViewController? = self
+        
+        repeat {
+            if parentVC is SOContainerViewController {
+                return parentVC as? SOContainerViewController
+            }
+            parentVC = parentVC!.parentViewController
+        }
+        while (parentVC != nil)
+        
+        return nil
+    }
+    
+}
+
+
 public class SOContainerViewController: UIViewController {
     
     public var delegate: SOContainerViewControllerDelegate?
@@ -30,12 +49,18 @@ public class SOContainerViewController: UIViewController {
             oldValue?.view.removeFromSuperview()
             oldValue?.removeFromParentViewController()
             
-            self.view.addSubview((topViewController?.view)!)
-            self.addChildViewController(topViewController!)
-            topViewController?.didMoveToParentViewController(self)
-            topViewController?.view.addGestureRecognizer(self.createPanGestureRecognizer())
-            
-            self.view.bringSubviewToFront(self.view)
+            if let topVC = self.topViewController {
+                topVC.willMoveToParentViewController(self)
+                
+                self.addChildViewController(topVC)
+                self.view.addSubview(topVC.view)
+                
+                topVC.didMoveToParentViewController(self)
+                
+                topVC.view.addGestureRecognizer(self.createPanGestureRecognizer())
+                
+                self.view.bringSubviewToFront(self.view)
+            }
             
             if let vc = self.leftViewController {
                 self.view.bringSubviewToFront(vc.view)
@@ -66,7 +91,7 @@ public class SOContainerViewController: UIViewController {
         self.view.addGestureRecognizer(self.createPanGestureRecognizer())
     }
     
-    private func setMenuOpened(opened: Bool) {
+    public func setMenuOpened(opened: Bool) {
         var frameToApply = self.leftViewController?.view.frame
         frameToApply?.origin.x = opened ? LeftViewControllerOpenedLeftOffset : -(self.leftViewController?.view.frame.size.width)!
         
