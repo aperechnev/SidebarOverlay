@@ -9,6 +9,8 @@
 import UIKit
 
 
+
+/// Protocol that responds to events, that are passing from SOContainerViewController, when user interacts with it.
 public protocol SOContainerViewControllerDelegate {
     
     func leftViewControllerPulledOut(pulledOut: Bool)
