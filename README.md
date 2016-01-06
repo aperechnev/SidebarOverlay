@@ -20,3 +20,5 @@ pod 'SidebarOverlay'
 ## How To Contribute
 
 ## Versioning
+
+We are using [semantic versioning](http://semver.org).
