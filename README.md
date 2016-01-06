@@ -19,6 +19,17 @@ pod 'SidebarOverlay'
 
 ## Getting Started
 
+It's quit simple to start developing with `SidebarOverlay`. First, you have to subclass `SOContainerViewController`:
+
+```Swift
+import SidebarOverlay
+
+class ViewController: SOContainerViewController {
+}
+```
+
+This is the root view controller, that makes all magic.
+
 ## How To Contribute
 
 ## Versioning
