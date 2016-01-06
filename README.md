@@ -8,7 +8,7 @@
 
 ## Installation
 
-The easiest way to start development using `SidebarOverlay` is to install it via CocoaPods. Just add this to your `Podfile`:
+The easiest way to start development using `SidebarOverlay` is to install it via CocoaPods. Just add it to your `Podfile`:
 
 ```Podspec
 source 'https://github.com/CocoaPods/Specs.git'
