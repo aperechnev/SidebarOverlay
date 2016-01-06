@@ -12,7 +12,7 @@ import UIKit
 class TopViewController: UIViewController {
     
     @IBAction func showMeMyMenu () {
-        if let container = self.so_container() {
+        if let container = self.so_containerViewController {
             container.setMenuOpened(true)
         }
     }

@@ -28,6 +28,10 @@ class ViewController: SOContainerViewController, SOContainerViewControllerDelega
             NSLog("You've closed the left view controller.")
         }
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 
 }
 

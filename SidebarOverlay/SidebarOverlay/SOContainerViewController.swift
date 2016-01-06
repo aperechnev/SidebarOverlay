@@ -9,11 +9,8 @@
 import UIKit
 
 
-let LeftViewControllerRightIndent: CGFloat = 56.0
-let LeftViewControllerOpenedLeftOffset: CGFloat = 0.0
-let SideViewControllerOpenAnimationDuration: NSTimeInterval = 0.24
 
-
+/// Protocol that responds to events, that are passing from SOContainerViewController, when user interacts with it.
 public protocol SOContainerViewControllerDelegate {
     
     func leftViewControllerPulledOut(pulledOut: Bool)
@@ -23,7 +20,7 @@ public protocol SOContainerViewControllerDelegate {
 
 public extension UIViewController {
     
-    func so_container() -> SOContainerViewController? {
+    var so_containerViewController: SOContainerViewController? {
         var parentVC: UIViewController? = self
         
         repeat {
@@ -37,10 +34,20 @@ public extension UIViewController {
         return nil
     }
     
+    @available(*, deprecated=1.1.1, message="Use so_containerViewController instead.")
+    func so_container() -> SOContainerViewController? {
+        return self.so_containerViewController
+    }
+    
 }
 
 
 public class SOContainerViewController: UIViewController {
+    
+    let LeftViewControllerRightIndent: CGFloat = 56.0
+    let LeftViewControllerOpenedLeftOffset: CGFloat = 0.0
+    let SideViewControllerOpenAnimationDuration: NSTimeInterval = 0.24
+    
     
     public var delegate: SOContainerViewControllerDelegate?
     
