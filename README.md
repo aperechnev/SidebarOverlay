@@ -4,7 +4,7 @@
 
 `SidebarOverlay` is an implementation of sidebar menu, similar to `ECSlidingViewController`. The difference is that in `SidebarOverlay` the sidebar menu covers the top view when user opens it, like on the picture below:
 
-![SidebarOverlay application example](https://habrastorage.org/files/411/f68/703/411f687037d64fc89539698456aef57e.gif)
+![SidebarOverlay application example](https://habrastorage.org/files/812/9c0/7da/8129c07da55f4a95a110bea8eb4a8e5b.gif)
 
 ## Installation
 
