@@ -66,6 +66,8 @@ To close the sidebar menu, just call the `setMenuOpened(false)` method.
 
 ## How To Contribute
 
+Please follow the git-flow notation and make sure that all tests are passed before contributing. Your questions and pull requests are welcome.
+
 ## Versioning
 
 We are using [semantic versioning](http://semver.org).
