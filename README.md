@@ -42,6 +42,28 @@ class ContainerViewController: SOContainerViewController {
 }
 ```
 
+Set the container view controller as initial on your storyboard and your basic application with sidebar is ready to run.
+
+### Open sidebar menu programatically
+
+It's always good if user is able to open sidebar menu not only by swipe gesture, but also by tap on menu button. To open sidebar menu programatically, call `setMenuOpened(true)` method of container view controller:
+
+```Swift
+class TopViewController: UIViewController {
+    
+    @IBAction func showMeMyMenu () {
+        if let container = self.so_containerViewController {
+            container.setMenuOpened(true)
+        }
+    }
+
+}
+```
+
+As you see, we have property named `so_containerViewController`. This property is automatically added to all view controllers and you're able to access it everywhere.
+
+To close the sidebar menu, just call the `setMenuOpened(false)` method.
+
 ## How To Contribute
 
 ## Versioning
