@@ -19,16 +19,28 @@ pod 'SidebarOverlay'
 
 ## Getting Started
 
-It's quit simple to start developing with `SidebarOverlay`. First, you have to subclass `SOContainerViewController`:
+It's quit simple to start developing with `SidebarOverlay`. First, we have to create three view controllers on our storyboard:
+
+* container view controller
+* top view controller
+* left view controller
+
+The container view controller is the root view controller that makes all magic for us. It's necessary to subclass `SOContainerViewController` and assign it to our container view controller. Then we can setup top and left view controllers:
 
 ```Swift
 import SidebarOverlay
 
-class ViewController: SOContainerViewController {
+class ContainerViewController: SOContainerViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        self.topViewController = self.storyboard?.instantiateViewControllerWithIdentifier("topScreen")
+        self.leftViewController = self.storyboard?.instantiateViewControllerWithIdentifier("leftScreen")
+    }
+
 }
 ```
-
-This is the root view controller, that makes all magic.
 
 ## How To Contribute
 
