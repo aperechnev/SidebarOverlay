@@ -1,6 +1,7 @@
 # 1.2.0
 
 * Project integrated to Travis CI
+* Now container view controller is the gesture recognizer delegate
 * Example application extended with menu items
 
 
