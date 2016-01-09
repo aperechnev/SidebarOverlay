@@ -15,6 +15,24 @@ public protocol SOContainerViewControllerDelegate {
     
     func leftViewControllerPulledOut(pulledOut: Bool)
     
+    func willSetTopViewController(viewController: UIViewController?)
+    func didSetTopViewController(viewController: UIViewController?)
+    
+    func willSetLeftViewController(viewController: UIViewController?)
+    func didSetLeftViewController(viewController: UIViewController?)
+    
+}
+
+extension SOContainerViewControllerDelegate {
+    
+    func leftViewControllerPulledOut(pulledOut: Bool) {}
+    
+    func willSetTopViewController(viewController: UIViewController?) {}
+    func didSetTopViewController(viewController: UIViewController?) {}
+    
+    func willSetLeftViewController(viewController: UIViewController?) {}
+    func didSetLeftViewController(viewController: UIViewController?) {}
+    
 }
 
 
@@ -52,6 +70,9 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     public var delegate: SOContainerViewControllerDelegate?
     
     public var topViewController: UIViewController? {
+        willSet {
+            self.delegate?.willSetTopViewController(newValue)
+        }
         didSet {
             oldValue?.view.removeFromSuperview()
             oldValue?.removeFromParentViewController()
@@ -70,10 +91,15 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
             if let vc = self.leftViewController {
                 self.view.bringSubviewToFront(vc.view)
             }
+            
+            self.delegate?.didSetTopViewController(topViewController)
         }
     }
     
     public var leftViewController: UIViewController? {
+        willSet {
+            self.delegate?.willSetLeftViewController(newValue)
+        }
         didSet {
             self.view.addSubview((self.leftViewController?.view)!)
             self.addChildViewController(self.leftViewController!)
@@ -87,6 +113,8 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
             self.leftViewController?.view.frame = menuFrame!
             
             self.leftViewController?.view.addGestureRecognizer(self.createPanGestureRecognizer())
+            
+            self.delegate?.didSetLeftViewController(leftViewController)
         }
     }
     

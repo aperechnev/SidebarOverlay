@@ -29,6 +29,22 @@ class ViewController: SOContainerViewController, SOContainerViewControllerDelega
         }
     }
     
+    func willSetLeftViewController(viewController: UIViewController?) {
+        
+    }
+    
+    func didSetLeftViewController(viewController: UIViewController?) {
+        
+    }
+    
+    func willSetTopViewController(viewController: UIViewController?) {
+        
+    }
+    
+    func didSetTopViewController(viewController: UIViewController?) {
+        
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
