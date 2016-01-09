@@ -1,4 +1,14 @@
-1.3.0
+# 1.3.2
+
+* Fucking verioning fix. I have to automate it
+
+
+# 1.3.1
+
+* Protocol extension marked as public
+
+
+# 1.3.0
 
 * Top view controller appearence fix
 * Delegate can handle events when top and left view controllers will or did set
