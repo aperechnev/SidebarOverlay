@@ -42,7 +42,7 @@ public extension UIViewController {
 }
 
 
-public class SOContainerViewController: UIViewController {
+public class SOContainerViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let LeftViewControllerRightIndent: CGFloat = 56.0
     let LeftViewControllerOpenedLeftOffset: CGFloat = 0.0
@@ -93,11 +93,6 @@ public class SOContainerViewController: UIViewController {
     }
     
     
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.addGestureRecognizer(self.createPanGestureRecognizer())
-    }
-    
     public func setMenuOpened(opened: Bool) {
         var frameToApply = self.leftViewController?.view.frame
         frameToApply?.origin.x = opened ? LeftViewControllerOpenedLeftOffset : -(self.leftViewController?.view.frame.size.width)!
@@ -136,7 +131,12 @@ public class SOContainerViewController: UIViewController {
         let  panGestureRecognizer = UIPanGestureRecognizer.init(target: self, action: "moveMenu:")
         panGestureRecognizer.maximumNumberOfTouches = 1
         panGestureRecognizer.minimumNumberOfTouches = 1
+        panGestureRecognizer.delegate = self
         return panGestureRecognizer
+    }
+    
+    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
 }
