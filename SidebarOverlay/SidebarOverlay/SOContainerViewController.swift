@@ -135,8 +135,13 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
         return panGestureRecognizer
     }
     
-    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+    public func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let panGestureRecognizer = gestureRecognizer as! UIPanGestureRecognizer
+        let translation = panGestureRecognizer.translationInView(self.view)
+        if fabs(translation.x) > fabs(translation.y) {
+            return true
+        }
+        return false
     }
     
 }
