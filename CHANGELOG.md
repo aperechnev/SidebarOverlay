@@ -1,3 +1,9 @@
+1.3.0
+
+* Top view controller appearence fix
+* Delegate can handle events when top and left view controllers will or did set
+
+
 # 1.2.1
 
 * Pan gesture direction lock
