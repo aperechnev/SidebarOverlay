@@ -1,6 +1,7 @@
 # 1.2.0
 
 * Project integrated to Travis CI
+* Example application extended with menu items
 
 
 # 1.1.2
