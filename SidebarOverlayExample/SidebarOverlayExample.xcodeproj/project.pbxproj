@@ -14,6 +14,7 @@
 		322EAC441C2BC04E0077D684 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322EAC421C2BC04E0077D684 /* LaunchScreen.storyboard */; };
 		322EAC4F1C2BC04E0077D684 /* SidebarOverlayExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EAC4E1C2BC04E0077D684 /* SidebarOverlayExampleTests.swift */; };
 		322EAC5A1C2BC04E0077D684 /* SidebarOverlayExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EAC591C2BC04E0077D684 /* SidebarOverlayExampleUITests.swift */; };
+		324CBD2F1C40CC5A0014E608 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324CBD2E1C40CC5A0014E608 /* LeftViewController.swift */; };
 		32AE14421C3D2E73004E0629 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32AE14411C3D2E73004E0629 /* background@2x.png */; };
 		32AE14561C3D3039004E0629 /* SidebarOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AE144B1C3D2FF4004E0629 /* SidebarOverlay.framework */; };
 		32AE14571C3D3039004E0629 /* SidebarOverlay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32AE144B1C3D2FF4004E0629 /* SidebarOverlay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -93,6 +94,7 @@
 		322EAC551C2BC04E0077D684 /* SidebarOverlayExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SidebarOverlayExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		322EAC591C2BC04E0077D684 /* SidebarOverlayExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarOverlayExampleUITests.swift; sourceTree = "<group>"; };
 		322EAC5B1C2BC04E0077D684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		324CBD2E1C40CC5A0014E608 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		32AE14411C3D2E73004E0629 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		32AE14451C3D2FF4004E0629 /* SidebarOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SidebarOverlay.xcodeproj; path = ../SidebarOverlay/SidebarOverlay.xcodeproj; sourceTree = "<group>"; };
 		32E5BFCE1C380D590027BF9C /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				322EAC3B1C2BC04E0077D684 /* ViewController.swift */,
 				32E5BFCE1C380D590027BF9C /* TopViewController.swift */,
+				324CBD2E1C40CC5A0014E608 /* LeftViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32E5BFCF1C380D590027BF9C /* TopViewController.swift in Sources */,
+				324CBD2F1C40CC5A0014E608 /* LeftViewController.swift in Sources */,
 				322EAC3C1C2BC04E0077D684 /* ViewController.swift in Sources */,
 				322EAC3A1C2BC04D0077D684 /* AppDelegate.swift in Sources */,
 			);
