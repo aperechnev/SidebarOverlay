@@ -23,7 +23,7 @@ public protocol SOContainerViewControllerDelegate {
     
 }
 
-extension SOContainerViewControllerDelegate {
+public extension SOContainerViewControllerDelegate {
     
     func leftViewControllerPulledOut(pulledOut: Bool) {}
     
