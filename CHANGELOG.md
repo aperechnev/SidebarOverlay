@@ -1,3 +1,8 @@
+# 1.2.1
+
+* Pan gesture direction lock
+
+
 # 1.2.0
 
 * Project integrated to Travis CI
