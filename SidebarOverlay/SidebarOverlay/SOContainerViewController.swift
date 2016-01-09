@@ -65,8 +65,6 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
                 topVC.didMoveToParentViewController(self)
                 
                 topVC.view.addGestureRecognizer(self.createPanGestureRecognizer())
-                
-                self.view.bringSubviewToFront(self.view)
             }
             
             if let vc = self.leftViewController {

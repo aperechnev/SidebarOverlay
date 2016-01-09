@@ -9,7 +9,7 @@
 import UIKit
 
 
-class LeftViewController: UIViewController, UITableViewDataSource {
+class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -28,4 +28,12 @@ class LeftViewController: UIViewController, UITableViewDataSource {
         return cell
     }
 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("topScreen")
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            self.so_containerViewController?.topViewController = vc
+        }
+    }
+    
 }
