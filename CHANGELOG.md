@@ -1,3 +1,8 @@
+# 1.3.3
+
+* Documentation fixes
+
+
 # 1.3.2
 
 * Fucking verioning fix. I have to automate it
