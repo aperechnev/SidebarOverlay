@@ -66,7 +66,7 @@ To close the sidebar menu, just call the `setMenuOpened(false)` method.
 
 ## How To Contribute
 
-Please follow the [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/index.html) notation and make sure that all tests are passed before contributing. Your questions and pull requests are welcome.
+Please follow the [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/index.html) notation and make sure that all tests are passing before contributing. Your questions and pull requests are welcome.
 
 ## Versioning
 
