@@ -1,5 +1,7 @@
 # SidebarOverlay
 
+[![Join the chat at https://gitter.im/aperechnev/SidebarOverlay](https://badges.gitter.im/aperechnev/SidebarOverlay.svg)](https://gitter.im/aperechnev/SidebarOverlay?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Travis CI](https://api.travis-ci.org/aperechnev/SidebarOverlay.svg?branch=develop)](https://travis-ci.org/aperechnev/SidebarOverlay) [![CocoaPods](https://img.shields.io/cocoapods/v/SidebarOverlay.svg)](http://cocoapods.org/pods/SidebarOverlay) ![CocoaPods](https://img.shields.io/cocoapods/p/SidebarOverlay.svg) [![CocoaDocs](https://img.shields.io/cocoapods/metrics/doc-percent/SidebarOverlay.svg)](http://cocoadocs.org/docsets/SidebarOverlay/)
 
 `SidebarOverlay` is an implementation of sidebar menu, similar to `ECSlidingViewController`. The difference is that in `SidebarOverlay` the sidebar menu covers the top view when user opens it, like on the picture below:
