@@ -10,39 +10,20 @@ import UIKit
 import SidebarOverlay
 
 
-class ViewController: SOContainerViewController, SOContainerViewControllerDelegate {
+class ViewController: SOContainerViewController {
+    
+    override var isLeftViewControllerPresented: Bool {
+        didSet {
+            let action = isLeftViewControllerPresented ? "opened" : "closed"
+            NSLog("You've \(action) the left view controller.")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.topViewController = self.storyboard?.instantiateViewControllerWithIdentifier("topScreen")
         self.leftViewController = self.storyboard?.instantiateViewControllerWithIdentifier("leftScreen")
-        
-        self.delegate = self // This is just an exmaple, isn't it? :)
-    }
-    
-    func leftViewControllerPulledOut(pulledOut: Bool) {
-        if pulledOut {
-            NSLog("You've opened the left view controller.")
-        } else {
-            NSLog("You've closed the left view controller.")
-        }
-    }
-    
-    func willSetLeftViewController(viewController: UIViewController?) {
-        
-    }
-    
-    func didSetLeftViewController(viewController: UIViewController?) {
-        
-    }
-    
-    func willSetTopViewController(viewController: UIViewController?) {
-        
-    }
-    
-    func didSetTopViewController(viewController: UIViewController?) {
-        
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
