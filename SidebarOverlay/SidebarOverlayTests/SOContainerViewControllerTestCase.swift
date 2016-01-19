@@ -71,4 +71,21 @@ class SOContainerViewControllerTestCase: XCTestCase {
         XCTAssertEqual(containerViewController, topViewController.so_containerViewController)
     }
     
+    func testVector() {
+        let containerViewController = SOContainerViewController()
+        XCTAssertTrue(containerViewController.vectorIsMoreHorizontal(CGPointMake(20, -10)))
+        XCTAssertFalse(containerViewController.vectorIsMoreHorizontal(CGPointMake(10, -20)))
+    }
+    
+    func testSidebarMoveFinishing() {
+        let containerViewController = SOContainerViewController()
+        let viewController = UIViewController()
+        
+        viewController.view.frame = CGRectMake(-50, 0, 200, 400)
+        XCTAssertTrue(containerViewController.viewPulledOutMoreThanHalfOfItsWidth(viewController))
+        
+        viewController.view.frame = CGRectMake(-150, 0, 200, 400)
+        XCTAssertFalse(containerViewController.viewPulledOutMoreThanHalfOfItsWidth(viewController))
+    }
+    
 }

@@ -127,29 +127,41 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
             panGesture.setTranslation(CGPointMake(0, 0), inView: self.view)
         }
         else if panGesture.state == UIGestureRecognizerState.Ended {
-            let isMenuPulledEnoghToOpenIt = fabs((self.leftViewController?.view.frame.origin.x)!) < (self.leftViewController?.view.frame.size.width)! / 2
-            
-            self.isLeftViewControllerPresented = isMenuPulledEnoghToOpenIt
+            if let sidebar = self.leftViewController {
+                self.isLeftViewControllerPresented = self.viewPulledOutMoreThanHalfOfItsWidth(sidebar)
+            }
         }
     }
     
     public func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         let panGestureRecognizer = gestureRecognizer as! UIPanGestureRecognizer
         let translation = panGestureRecognizer.translationInView(self.view)
-        if fabs(translation.x) > fabs(translation.y) {
-            return true
+        return self.vectorIsMoreHorizontal(translation)
+    }
+    
+    //
+    // MARK: Internal usage
+    
+    func brindLeftViewToFront() {
+        if let vc = self.leftViewController {
+            self.view.bringSubviewToFront(vc.view)
         }
-        return false
     }
     
     func createPanGestureRecognizer() -> UIPanGestureRecognizer! {
         return UIPanGestureRecognizer.init(target: self, action: "moveMenu:")
     }
     
-    internal func brindLeftViewToFront() {
-        if let vc = self.leftViewController {
-            self.view.bringSubviewToFront(vc.view)
+    func vectorIsMoreHorizontal(point: CGPoint) -> Bool {
+        if fabs(point.x) > fabs(point.y) {
+            return true
         }
+        return false
+    }
+    
+    func viewPulledOutMoreThanHalfOfItsWidth(viewController: UIViewController) -> Bool {
+        let frame = viewController.view.frame
+        return fabs(frame.origin.x) < frame.size.width / 2
     }
     
 }
