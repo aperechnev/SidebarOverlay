@@ -118,12 +118,10 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
         let translatedPoint = panGesture.translationInView(self.view)
         
         if panGesture.state == UIGestureRecognizerState.Changed {
-            let menuView = self.leftViewController?.view
-            var calculatedXPosition = (menuView?.center.x)! + translatedPoint.x
+            if let sidebarView = self.leftViewController?.view {
+                self.moveSidebarToVector(sidebarView, vector: translatedPoint)
+            }
             
-            calculatedXPosition = min((menuView?.frame.size.width)! / 2.0, calculatedXPosition)
-            
-            menuView?.center = CGPointMake(calculatedXPosition, (menuView?.center.y)!)
             panGesture.setTranslation(CGPointMake(0, 0), inView: self.view)
         }
         else if panGesture.state == UIGestureRecognizerState.Ended {
@@ -162,6 +160,11 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     func viewPulledOutMoreThanHalfOfItsWidth(viewController: UIViewController) -> Bool {
         let frame = viewController.view.frame
         return fabs(frame.origin.x) < frame.size.width / 2
+    }
+    
+    func moveSidebarToVector(sidebar: UIView, vector: CGPoint) {
+        let calculatedXPosition = min(sidebar.frame.size.width / 2.0, sidebar.center.x + vector.x)
+        sidebar.center = CGPointMake(calculatedXPosition, sidebar.center.y)
     }
     
 }
