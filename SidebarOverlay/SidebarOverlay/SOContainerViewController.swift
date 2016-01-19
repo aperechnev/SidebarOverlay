@@ -9,33 +9,6 @@
 import UIKit
 
 
-
-/// Protocol that responds to events, that are passing from SOContainerViewController, when user interacts with it.
-public protocol SOContainerViewControllerDelegate {
-    
-    func leftViewControllerPulledOut(pulledOut: Bool)
-    
-    func willSetTopViewController(viewController: UIViewController?)
-    func didSetTopViewController(viewController: UIViewController?)
-    
-    func willSetLeftViewController(viewController: UIViewController?)
-    func didSetLeftViewController(viewController: UIViewController?)
-    
-}
-
-public extension SOContainerViewControllerDelegate {
-    
-    func leftViewControllerPulledOut(pulledOut: Bool) {}
-    
-    func willSetTopViewController(viewController: UIViewController?) {}
-    func didSetTopViewController(viewController: UIViewController?) {}
-    
-    func willSetLeftViewController(viewController: UIViewController?) {}
-    func didSetLeftViewController(viewController: UIViewController?) {}
-    
-}
-
-
 public extension UIViewController {
     
     var so_containerViewController: SOContainerViewController? {
@@ -52,11 +25,6 @@ public extension UIViewController {
         return nil
     }
     
-    @available(*, deprecated=1.1.1, message="Use so_containerViewController instead.")
-    func so_container() -> SOContainerViewController? {
-        return self.so_containerViewController
-    }
-    
 }
 
 
@@ -66,70 +34,82 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     let LeftViewControllerOpenedLeftOffset: CGFloat = 0.0
     let SideViewControllerOpenAnimationDuration: NSTimeInterval = 0.24
     
-    
-    public var delegate: SOContainerViewControllerDelegate?
+    var _topViewController: UIViewController?
+    var _leftViewController: UIViewController?
     
     public var topViewController: UIViewController? {
-        willSet {
-            self.delegate?.willSetTopViewController(newValue)
+        get {
+            return _topViewController
         }
-        didSet {
-            oldValue?.view.removeFromSuperview()
-            oldValue?.removeFromParentViewController()
+        set {
+            _topViewController?.view.removeFromSuperview()
+            _topViewController?.removeFromParentViewController()
             
-            if let topVC = self.topViewController {
-                topVC.willMoveToParentViewController(self)
+            _topViewController = newValue
+            
+            if let vc = _topViewController {
+                vc.willMoveToParentViewController(self)
+                self.addChildViewController(vc)
+                self.view.addSubview(vc.view)
+                vc.didMoveToParentViewController(self)
                 
-                self.addChildViewController(topVC)
-                self.view.addSubview(topVC.view)
-                
-                topVC.didMoveToParentViewController(self)
-                
-                topVC.view.addGestureRecognizer(self.createPanGestureRecognizer())
+                vc.view.addGestureRecognizer(self.createPanGestureRecognizer())
             }
             
-            if let vc = self.leftViewController {
-                self.view.bringSubviewToFront(vc.view)
-            }
-            
-            self.delegate?.didSetTopViewController(topViewController)
+            self.brindLeftViewToFront()
         }
     }
     
     public var leftViewController: UIViewController? {
-        willSet {
-            self.delegate?.willSetLeftViewController(newValue)
+        get {
+            return _leftViewController
         }
-        didSet {
-            self.view.addSubview((self.leftViewController?.view)!)
-            self.addChildViewController(self.leftViewController!)
-            self.leftViewController?.didMoveToParentViewController(self)
+        set {
+            _leftViewController?.view.removeFromSuperview()
+            _leftViewController?.removeFromParentViewController()
             
-            self.view.bringSubviewToFront((self.leftViewController?.view)!)
+            _leftViewController = newValue
             
-            var menuFrame = self.leftViewController?.view.frame
-            menuFrame?.size.width = self.view.frame.size.width - LeftViewControllerRightIndent
-            menuFrame?.origin.x = -(menuFrame?.size.width)!
-            self.leftViewController?.view.frame = menuFrame!
+            if let vc = _leftViewController {
+                vc.willMoveToParentViewController(self)
+                self.addChildViewController(vc)
+                self.view.addSubview(vc.view)
+                vc.didMoveToParentViewController(self)
+                
+                vc.view.addGestureRecognizer(self.createPanGestureRecognizer())
+                
+                var menuFrame = vc.view.frame
+                menuFrame.size.width = self.view.frame.size.width - LeftViewControllerRightIndent
+                menuFrame.origin.x = -menuFrame.size.width
+                vc.view.frame = menuFrame
+            }
             
-            self.leftViewController?.view.addGestureRecognizer(self.createPanGestureRecognizer())
-            
-            self.delegate?.didSetLeftViewController(leftViewController)
+            self.brindLeftViewToFront()
         }
     }
     
-    
-    public func setMenuOpened(opened: Bool) {
-        var frameToApply = self.leftViewController?.view.frame
-        frameToApply?.origin.x = opened ? LeftViewControllerOpenedLeftOffset : -(self.leftViewController?.view.frame.size.width)!
-        
-        let animations: () -> () = {
-            self.leftViewController?.view.frame = frameToApply!
+    public var isLeftViewControllerPresented: Bool {
+        get {
+            guard let leftVC = self.leftViewController else {
+                return false
+            }
+            
+            return leftVC.view.frame.origin.x == LeftViewControllerOpenedLeftOffset
         }
-        
-        UIView.animateWithDuration(SideViewControllerOpenAnimationDuration, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: animations, completion: nil)
-        
-        self.delegate?.leftViewControllerPulledOut(opened)
+        set {
+            guard let leftVC = self.leftViewController else {
+                return
+            }
+            
+            var frame = leftVC.view.frame
+            frame.origin.x = newValue ? LeftViewControllerOpenedLeftOffset : -frame.size.width
+            
+            let animations = { () -> () in
+                leftVC.view.frame = frame
+            }
+            
+            UIView.animateWithDuration(SideViewControllerOpenAnimationDuration, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: animations, completion: nil)
+        }
     }
     
     public func moveMenu(panGesture: UIPanGestureRecognizer) {
@@ -138,36 +118,53 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
         let translatedPoint = panGesture.translationInView(self.view)
         
         if panGesture.state == UIGestureRecognizerState.Changed {
-            let menuView = self.leftViewController?.view
-            var calculatedXPosition = (menuView?.center.x)! + translatedPoint.x
+            if let sidebarView = self.leftViewController?.view {
+                self.moveSidebarToVector(sidebarView, vector: translatedPoint)
+            }
             
-            calculatedXPosition = min((menuView?.frame.size.width)! / 2.0, calculatedXPosition)
-            
-            menuView?.center = CGPointMake(calculatedXPosition, (menuView?.center.y)!)
             panGesture.setTranslation(CGPointMake(0, 0), inView: self.view)
         }
         else if panGesture.state == UIGestureRecognizerState.Ended {
-            let isMenuPulledEnoghToOpenIt = fabs((self.leftViewController?.view.frame.origin.x)!) < (self.leftViewController?.view.frame.size.width)! / 2
-            
-            self.setMenuOpened(isMenuPulledEnoghToOpenIt)
+            if let sidebar = self.leftViewController {
+                self.isLeftViewControllerPresented = self.viewPulledOutMoreThanHalfOfItsWidth(sidebar)
+            }
         }
-    }
-    
-    private func createPanGestureRecognizer() -> UIPanGestureRecognizer! {
-        let  panGestureRecognizer = UIPanGestureRecognizer.init(target: self, action: "moveMenu:")
-        panGestureRecognizer.maximumNumberOfTouches = 1
-        panGestureRecognizer.minimumNumberOfTouches = 1
-        panGestureRecognizer.delegate = self
-        return panGestureRecognizer
     }
     
     public func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         let panGestureRecognizer = gestureRecognizer as! UIPanGestureRecognizer
         let translation = panGestureRecognizer.translationInView(self.view)
-        if fabs(translation.x) > fabs(translation.y) {
+        return self.vectorIsMoreHorizontal(translation)
+    }
+    
+    //
+    // MARK: Internal usage
+    
+    func brindLeftViewToFront() {
+        if let vc = self.leftViewController {
+            self.view.bringSubviewToFront(vc.view)
+        }
+    }
+    
+    func createPanGestureRecognizer() -> UIPanGestureRecognizer! {
+        return UIPanGestureRecognizer.init(target: self, action: "moveMenu:")
+    }
+    
+    func vectorIsMoreHorizontal(point: CGPoint) -> Bool {
+        if fabs(point.x) > fabs(point.y) {
             return true
         }
         return false
+    }
+    
+    func viewPulledOutMoreThanHalfOfItsWidth(viewController: UIViewController) -> Bool {
+        let frame = viewController.view.frame
+        return fabs(frame.origin.x) < frame.size.width / 2
+    }
+    
+    func moveSidebarToVector(sidebar: UIView, vector: CGPoint) {
+        let calculatedXPosition = min(sidebar.frame.size.width / 2.0, sidebar.center.x + vector.x)
+        sidebar.center = CGPointMake(calculatedXPosition, sidebar.center.y)
     }
     
 }

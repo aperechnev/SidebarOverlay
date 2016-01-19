@@ -1,6 +1,6 @@
 # SidebarOverlay
 
-[![Travis CI](https://api.travis-ci.org/aperechnev/SidebarOverlay.svg?branch=develop)](https://travis-ci.org/aperechnev/SidebarOverlay) [![CocoaPods](https://img.shields.io/cocoapods/v/SidebarOverlay.svg)](http://cocoapods.org/pods/SidebarOverlay) ![CocoaPods](https://img.shields.io/cocoapods/p/SidebarOverlay.svg) [![CocoaDocs](https://img.shields.io/cocoapods/metrics/doc-percent/SidebarOverlay.svg)](http://cocoadocs.org/docsets/SidebarOverlay/)
+[![Join the chat at https://gitter.im/aperechnev/SidebarOverlay](https://badges.gitter.im/aperechnev/SidebarOverlay.png)](https://gitter.im/aperechnev/SidebarOverlay?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Travis CI](https://api.travis-ci.org/aperechnev/SidebarOverlay.svg?branch=develop)](https://travis-ci.org/aperechnev/SidebarOverlay) [![CocoaPods](https://img.shields.io/cocoapods/v/SidebarOverlay.svg)](http://cocoapods.org/pods/SidebarOverlay) ![CocoaPods](https://img.shields.io/cocoapods/p/SidebarOverlay.svg) [![CocoaDocs](https://img.shields.io/cocoapods/metrics/doc-percent/SidebarOverlay.svg)](http://cocoadocs.org/docsets/SidebarOverlay/) [![codecov.io](https://codecov.io/github/aperechnev/SidebarOverlay/coverage.svg?branch=develop)](https://codecov.io/github/aperechnev/SidebarOverlay?branch=develop)
 
 `SidebarOverlay` is an implementation of sidebar menu, similar to `ECSlidingViewController`. The difference is that in `SidebarOverlay` the sidebar menu covers the top view when user opens it, like on the picture below:
 
@@ -53,7 +53,7 @@ class TopViewController: UIViewController {
     
     @IBAction func showMeMyMenu () {
         if let container = self.so_containerViewController {
-            container.setMenuOpened(true)
+            container.isLeftViewControllerPresented = true
         }
     }
 
@@ -62,11 +62,15 @@ class TopViewController: UIViewController {
 
 As you see, we have property named `so_containerViewController`. This property is automatically added to all view controllers and you're able to access it everywhere.
 
-To close the sidebar menu, just call the `setMenuOpened(false)` method.
+To close the sidebar menu, just set the `isLeftViewControllerPresented` property to `false`.
 
 ## How To Contribute
 
-Please follow the [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/index.html) notation and make sure that all tests are passed before contributing. Your questions and pull requests are welcome.
+Please follow the [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/index.html) notation and make sure that all tests are passing before contributing. Your questions and pull requests are welcome.
+
+## Code coverage
+
+![codecov.io](https://codecov.io/github/aperechnev/SidebarOverlay/branch.svg?branch=develop)
 
 ## Versioning
 

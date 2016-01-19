@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		322EAC131C2B3F820077D684 /* SidebarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 322EAC121C2B3F820077D684 /* SidebarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		322EAC1A1C2B3F820077D684 /* SidebarOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 322EAC0F1C2B3F820077D684 /* SidebarOverlay.framework */; };
-		322EAC1F1C2B3F830077D684 /* SidebarOverlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EAC1E1C2B3F830077D684 /* SidebarOverlayTests.swift */; };
 		322EAC2B1C2B40420077D684 /* SOContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EAC2A1C2B40420077D684 /* SOContainerViewController.swift */; };
+		32C33D5E1C4D76440001685B /* SOContainerViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C33D5D1C4D76440001685B /* SOContainerViewControllerTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,9 +28,9 @@
 		322EAC121C2B3F820077D684 /* SidebarOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SidebarOverlay.h; sourceTree = "<group>"; };
 		322EAC141C2B3F820077D684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		322EAC191C2B3F820077D684 /* SidebarOverlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SidebarOverlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		322EAC1E1C2B3F830077D684 /* SidebarOverlayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarOverlayTests.swift; sourceTree = "<group>"; };
 		322EAC201C2B3F830077D684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		322EAC2A1C2B40420077D684 /* SOContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOContainerViewController.swift; sourceTree = "<group>"; };
+		32C33D5D1C4D76440001685B /* SOContainerViewControllerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOContainerViewControllerTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +83,7 @@
 		322EAC1D1C2B3F830077D684 /* SidebarOverlayTests */ = {
 			isa = PBXGroup;
 			children = (
-				322EAC1E1C2B3F830077D684 /* SidebarOverlayTests.swift */,
+				32C33D5D1C4D76440001685B /* SOContainerViewControllerTestCase.swift */,
 				322EAC201C2B3F830077D684 /* Info.plist */,
 			);
 			path = SidebarOverlayTests;
@@ -206,7 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				322EAC1F1C2B3F830077D684 /* SidebarOverlayTests.swift in Sources */,
+				32C33D5E1C4D76440001685B /* SOContainerViewControllerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
