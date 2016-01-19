@@ -64,6 +64,18 @@ As you see, we have property named `so_containerViewController`. This property i
 
 To close the sidebar menu, just set the `isLeftViewControllerPresented` property to `false`.
 
+### Changing top view controller from the sidebar menu
+
+Since you've implemented your sidebar menu on the left view controller, you need to show different top view controllers each time user chooses an item in menu. It's pretty simple. Just set the `topViewController` property of container view controller:
+
+```Swift
+// Table view delegate method that invokes when user chooses an item in UITableView
+func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let profileViewController = self.storyboard!.instantiateViewControllerWithIdentifier("profileViewController")
+    self.so_containerViewController.topViewController = profileViewController
+}
+```
+
 ## How To Contribute
 
 Please follow the [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/index.html) notation and make sure that all tests are passing before contributing. Your questions and pull requests are welcome.
@@ -75,3 +87,11 @@ Please follow the [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/i
 ## Versioning
 
 We are using [semantic versioning](http://semver.org).
+
+## Support
+
+If you need some help, you can join our [gitter room](https://gitter.im/aperechnev/SidebarOverlay).
+
+## License
+
+SidebarOverlay is released under the MIT license. See LICENSE for details.
