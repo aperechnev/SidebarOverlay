@@ -62,7 +62,7 @@ class TopViewController: UIViewController {
 
 As you see, we have property named `so_containerViewController`. This property is automatically added to all view controllers and you're able to access it everywhere.
 
-To close the sidebar menu, just call the `setMenuOpened(false)` method.
+To close the sidebar menu, just set the `isLeftViewControllerPresented` property to `false`.
 
 ## How To Contribute
 
