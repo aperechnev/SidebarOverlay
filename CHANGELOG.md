@@ -1,3 +1,11 @@
+# 2.0
+
+* New API introduced
+* Code test coverage
+* Community infrastructure
+* Another fixes and improvements
+
+
 # 1.3.3
 
 * Documentation fixes
