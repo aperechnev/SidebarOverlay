@@ -75,3 +75,11 @@ Please follow the [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/i
 ## Versioning
 
 We are using [semantic versioning](http://semver.org).
+
+## Support
+
+If you need some help, you can join our [gitter room](https://gitter.im/aperechnev/SidebarOverlay).
+
+## License
+
+SidebarOverlay is released under the MIT license. See LICENSE for details.
