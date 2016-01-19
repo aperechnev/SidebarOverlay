@@ -1,3 +1,7 @@
+# 2.0.1
+
+* Documentation improvements
+
 # 2.0
 
 * New API introduced
