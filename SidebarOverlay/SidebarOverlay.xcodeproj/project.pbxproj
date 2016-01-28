@@ -148,7 +148,7 @@
 				CLASSPREFIX = SO;
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = "Alexander Perechnev";
+				ORGANIZATIONNAME = "Alex Krzyżanowski";
 				TargetAttributes = {
 					322EAC0E1C2B3F820077D684 = {
 						CreatedOnToolsVersion = 7.2;

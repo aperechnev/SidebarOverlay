@@ -2,8 +2,8 @@
 //  SOContainerViewController.swift
 //  SidebarOverlay
 //
-//  Created by Alexander Perechnev on 12/23/15.
-//  Copyright © 2015 Alexander Perechnev. All rights reserved.
+//  Created by Alex Krzyżanowski on 12/23/15.
+//  Copyright © 2015 Alex Krzyżanowski. All rights reserved.
 //
 
 import UIKit
@@ -12,16 +12,12 @@ import UIKit
 public extension UIViewController {
     
     var so_containerViewController: SOContainerViewController? {
-        var parentVC: UIViewController? = self
-        
-        repeat {
-            if parentVC is SOContainerViewController {
-                return parentVC as? SOContainerViewController
-            }
-            parentVC = parentVC!.parentViewController
+        if self is SOContainerViewController {
+            return self as? SOContainerViewController
         }
-        while (parentVC != nil)
-        
+        if let parentVC = self.parentViewController {
+            return parentVC.so_containerViewController
+        }
         return nil
     }
     
