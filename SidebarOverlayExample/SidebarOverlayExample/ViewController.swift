@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  SidebarOverlayExample
 //
-//  Created by Alexander Perechnev on 12/24/15.
-//  Copyright © 2015 Alexander Perechnev. All rights reserved.
+//  Created by Alex Krzyżanowski on 12/24/15.
+//  Copyright © 2015 Alex Krzyżanowski. All rights reserved.
 //
 
 import UIKit

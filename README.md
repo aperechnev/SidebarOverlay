@@ -1,6 +1,6 @@
 # SidebarOverlay
 
-[![Join the chat at https://gitter.im/aperechnev/SidebarOverlay](https://badges.gitter.im/aperechnev/SidebarOverlay.png)](https://gitter.im/aperechnev/SidebarOverlay?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Travis CI](https://api.travis-ci.org/aperechnev/SidebarOverlay.svg?branch=develop)](https://travis-ci.org/aperechnev/SidebarOverlay) [![CocoaPods](https://img.shields.io/cocoapods/v/SidebarOverlay.svg)](http://cocoapods.org/pods/SidebarOverlay) ![CocoaPods](https://img.shields.io/cocoapods/p/SidebarOverlay.svg) [![CocoaDocs](https://img.shields.io/cocoapods/metrics/doc-percent/SidebarOverlay.svg)](http://cocoadocs.org/docsets/SidebarOverlay/) [![codecov.io](https://codecov.io/github/aperechnev/SidebarOverlay/coverage.svg?branch=develop)](https://codecov.io/github/aperechnev/SidebarOverlay?branch=develop)
+[![Join the chat at https://gitter.im/alexkrzyzanowski/SidebarOverlay](https://badges.gitter.im/alexkrzyzanowski/SidebarOverlay.png)](https://gitter.im/alexkrzyzanowski/SidebarOverlay?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Travis CI](https://api.travis-ci.org/alexkrzyzanowski/SidebarOverlay.svg?branch=develop)](https://travis-ci.org/alexkrzyzanowski/SidebarOverlay) [![CocoaPods](https://img.shields.io/cocoapods/v/SidebarOverlay.svg)](http://cocoapods.org/pods/SidebarOverlay) ![CocoaPods](https://img.shields.io/cocoapods/p/SidebarOverlay.svg) [![CocoaDocs](https://img.shields.io/cocoapods/metrics/doc-percent/SidebarOverlay.svg)](http://cocoadocs.org/docsets/SidebarOverlay/) [![codecov.io](https://codecov.io/github/alexkrzyzanowski/SidebarOverlay/coverage.svg?branch=develop)](https://codecov.io/github/alexkrzyzanowski/SidebarOverlay?branch=develop)
 
 `SidebarOverlay` is an implementation of sidebar menu, similar to `ECSlidingViewController`. The difference is that in `SidebarOverlay` the sidebar menu covers the top view when user opens it, like on the picture below:
 
@@ -82,7 +82,7 @@ Please follow the [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/i
 
 ## Code coverage
 
-![codecov.io](https://codecov.io/github/aperechnev/SidebarOverlay/branch.svg?branch=develop)
+![codecov.io](https://codecov.io/github/alexkrzyzanowski/SidebarOverlay/branch.svg?branch=develop)
 
 ## Versioning
 
@@ -90,7 +90,7 @@ We are using [semantic versioning](http://semver.org).
 
 ## Support
 
-If you need some help, you can join our [gitter room](https://gitter.im/aperechnev/SidebarOverlay).
+If you need some help, you can join our [gitter room](https://gitter.im/alexkrzyzanowski/SidebarOverlay).
 
 ## License
 
