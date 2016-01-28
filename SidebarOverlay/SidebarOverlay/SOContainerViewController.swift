@@ -11,6 +11,11 @@ import UIKit
 
 public extension UIViewController {
     
+    ///
+    /// Use this computed property to access the container view controller from any view controller.
+    ///
+    /// - returns: An instance of `SOContainerViewController` that holds current view controller
+    ///     or `nil` if there is not container view controller.
     var so_containerViewController: SOContainerViewController? {
         if self is SOContainerViewController {
             return self as? SOContainerViewController
