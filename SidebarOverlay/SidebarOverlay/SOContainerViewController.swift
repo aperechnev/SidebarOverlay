@@ -12,16 +12,12 @@ import UIKit
 public extension UIViewController {
     
     var so_containerViewController: SOContainerViewController? {
-        var parentVC: UIViewController? = self
-        
-        repeat {
-            if parentVC is SOContainerViewController {
-                return parentVC as? SOContainerViewController
-            }
-            parentVC = parentVC!.parentViewController
+        if self is SOContainerViewController {
+            return self as? SOContainerViewController
         }
-        while (parentVC != nil)
-        
+        if let parentVC = self.parentViewController {
+            return parentVC.so_containerViewController
+        }
         return nil
     }
     
