@@ -1,3 +1,8 @@
+# 2.0.2
+
+* Code improvements for `UIViewController` class extension
+* Documentation for `UIViewController` class extension
+
 # 2.0.1
 
 * Documentation improvements
