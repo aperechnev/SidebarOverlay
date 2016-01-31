@@ -11,13 +11,6 @@ import UIKit
 
 public class SOContainerViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    let LeftViewControllerRightIndent: CGFloat = 56.0
-    let LeftViewControllerOpenedLeftOffset: CGFloat = 0.0
-    let SideViewControllerOpenAnimationDuration: NSTimeInterval = 0.24
-    
-    var _topViewController: UIViewController?
-    var _leftViewController: UIViewController?
-    
     /**
      A view controller that is currently presented to user.
      
@@ -55,6 +48,8 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
         }
     }
     
+    /**
+    */
     public var leftViewController: UIViewController? {
         get {
             return _leftViewController
@@ -118,6 +113,14 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     
     //
     // MARK: Internal usage
+    
+    let LeftViewControllerRightIndent: CGFloat = 56.0
+    let LeftViewControllerOpenedLeftOffset: CGFloat = 0.0
+    let SideViewControllerOpenAnimationDuration: NSTimeInterval = 0.24
+    
+    var _topViewController: UIViewController?
+    var _leftViewController: UIViewController?
+    
     
     func moveMenu(panGesture: UIPanGestureRecognizer) {
         panGesture.view?.layer.removeAllAnimations()
