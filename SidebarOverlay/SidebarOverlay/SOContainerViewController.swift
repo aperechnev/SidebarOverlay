@@ -9,26 +9,6 @@
 import UIKit
 
 
-public extension UIViewController {
-    
-    ///
-    /// Use this computed property to access the container view controller from any view controller.
-    ///
-    /// - returns: An instance of `SOContainerViewController` that holds current view controller
-    ///     or `nil` if there is not container view controller.
-    var so_containerViewController: SOContainerViewController? {
-        if self is SOContainerViewController {
-            return self as? SOContainerViewController
-        }
-        if let parentVC = self.parentViewController {
-            return parentVC.so_containerViewController
-        }
-        return nil
-    }
-    
-}
-
-
 public class SOContainerViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let LeftViewControllerRightIndent: CGFloat = 56.0
@@ -38,6 +18,20 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     var _topViewController: UIViewController?
     var _leftViewController: UIViewController?
     
+    /**
+     A view controller that is currently presented to user.
+     
+     Assign this property to any view controller, that should be presented on the top of your application.
+     
+     In most cases you have to set this property when user selects an item in sidebar menu:
+     
+     ```swift
+     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("newsScreen")
+        self.so_containerViewController!.topViewController = vc
+     }
+     ```
+    */
     public var topViewController: UIViewController? {
         get {
             return _topViewController
@@ -113,7 +107,19 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
         }
     }
     
-    public func moveMenu(panGesture: UIPanGestureRecognizer) {
+    //
+    // MARK: Gesture recognizer delegate
+    
+    public func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let panGestureRecognizer = gestureRecognizer as! UIPanGestureRecognizer
+        let translation = panGestureRecognizer.translationInView(self.view)
+        return self.vectorIsMoreHorizontal(translation)
+    }
+    
+    //
+    // MARK: Internal usage
+    
+    func moveMenu(panGesture: UIPanGestureRecognizer) {
         panGesture.view?.layer.removeAllAnimations()
         
         let translatedPoint = panGesture.translationInView(self.view)
@@ -131,15 +137,6 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
             }
         }
     }
-    
-    public func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-        let panGestureRecognizer = gestureRecognizer as! UIPanGestureRecognizer
-        let translation = panGestureRecognizer.translationInView(self.view)
-        return self.vectorIsMoreHorizontal(translation)
-    }
-    
-    //
-    // MARK: Internal usage
     
     func brindLeftViewToFront() {
         if let vc = self.leftViewController {
