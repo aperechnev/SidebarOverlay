@@ -49,6 +49,11 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     }
     
     /**
+     A view controller that represents the sidebar menu.
+     
+     A view controller, that is assigned to this property, is hidden under the left edge of the screen. When user makes a left-to-right swipe gesture, it follows the finger and becomes visible.
+     
+     Usually you have to set it only once, when you prepare an instance of `SOContainerViewController` to be presented.
     */
     public var leftViewController: UIViewController? {
         get {
