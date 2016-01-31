@@ -1,3 +1,8 @@
+# 2.0.3
+
+* `UIViewController` class extension moved to a new file and fully documented
+* Documentation for a few properties of `SOContainerViewController`
+
 # 2.0.2
 
 * Code improvements for `UIViewController` class extension
