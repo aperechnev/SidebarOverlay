@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320B85EB1C5E2612003A6736 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320B85EA1C5E2612003A6736 /* UIViewController.swift */; };
 		322EAC131C2B3F820077D684 /* SidebarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 322EAC121C2B3F820077D684 /* SidebarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		322EAC1A1C2B3F820077D684 /* SidebarOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 322EAC0F1C2B3F820077D684 /* SidebarOverlay.framework */; };
 		322EAC2B1C2B40420077D684 /* SOContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EAC2A1C2B40420077D684 /* SOContainerViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		320B85EA1C5E2612003A6736 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		322EAC0F1C2B3F820077D684 /* SidebarOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SidebarOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		322EAC121C2B3F820077D684 /* SidebarOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SidebarOverlay.h; sourceTree = "<group>"; };
 		322EAC141C2B3F820077D684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				322EAC121C2B3F820077D684 /* SidebarOverlay.h */,
 				322EAC141C2B3F820077D684 /* Info.plist */,
 				322EAC2A1C2B40420077D684 /* SOContainerViewController.swift */,
+				320B85EA1C5E2612003A6736 /* UIViewController.swift */,
 			);
 			path = SidebarOverlay;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320B85EB1C5E2612003A6736 /* UIViewController.swift in Sources */,
 				322EAC2B1C2B40420077D684 /* SOContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
