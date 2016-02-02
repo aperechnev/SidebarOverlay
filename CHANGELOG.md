@@ -1,3 +1,7 @@
+# 2.1.2
+
+* Close sidebar menu on pan gesture also
+
 # 2.1
 
 * Now the top view controller is covered by transparent view when sidebar appears
