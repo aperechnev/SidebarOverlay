@@ -128,6 +128,9 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
         let tapOnContentCoverViewGesture = UITapGestureRecognizer(target: self, action: "contentCoverViewClicked")
         self.contentCoverView.addGestureRecognizer(tapOnContentCoverViewGesture)
         
+        let panOnContentCoverVewGesture = UIPanGestureRecognizer(target: self, action: "contentCoverViewClicked")
+        self.contentCoverView.addGestureRecognizer(panOnContentCoverVewGesture)
+        
         self.view.addSubview(self.contentCoverView)
     }
     
@@ -153,7 +156,9 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     var contentCoverView: UIView
     
     func contentCoverViewClicked() {
-        self.isLeftViewControllerPresented = false
+        if self.isLeftViewControllerPresented {
+            self.isLeftViewControllerPresented = false
+        }
     }
     
     func moveMenu(panGesture: UIPanGestureRecognizer) {
