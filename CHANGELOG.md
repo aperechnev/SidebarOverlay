@@ -1,3 +1,7 @@
+# 2.1
+
+* Now the top view controller is covered by transparent view when sidebar appears
+
 # 2.0.3
 
 * `UIViewController` class extension moved to a new file and fully documented

@@ -101,10 +101,34 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
             
             let animations = { () -> () in
                 leftVC.view.frame = frame
+                self.contentCoverView.alpha = newValue ? 1.0 : 0.0
             }
             
             UIView.animateWithDuration(SideViewControllerOpenAnimationDuration, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: animations, completion: nil)
         }
+    }
+    
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        self.contentCoverView = UIView()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        self.contentCoverView = UIView()
+        super.init(coder: aDecoder)
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.contentCoverView.frame = self.view.bounds
+        self.contentCoverView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        self.contentCoverView.alpha = 0.0
+        
+        let tapOnContentCoverViewGesture = UITapGestureRecognizer(target: self, action: "contentCoverViewClicked")
+        self.contentCoverView.addGestureRecognizer(tapOnContentCoverViewGesture)
+        
+        self.view.addSubview(self.contentCoverView)
     }
     
     //
@@ -126,6 +150,11 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     var _topViewController: UIViewController?
     var _leftViewController: UIViewController?
     
+    var contentCoverView: UIView
+    
+    func contentCoverViewClicked() {
+        self.isLeftViewControllerPresented = false
+    }
     
     func moveMenu(panGesture: UIPanGestureRecognizer) {
         panGesture.view?.layer.removeAllAnimations()
@@ -138,8 +167,11 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
             }
             
             panGesture.setTranslation(CGPointMake(0, 0), inView: self.view)
-        }
-        else if panGesture.state == UIGestureRecognizerState.Ended {
+            
+            if let view = self.leftViewController?.view {
+                self.contentCoverView.alpha = 1.0 - abs(view.frame.origin.x) / view.frame.size.width
+            }
+        } else if panGesture.state == UIGestureRecognizerState.Ended {
             if let sidebar = self.leftViewController {
                 self.isLeftViewControllerPresented = self.viewPulledOutMoreThanHalfOfItsWidth(sidebar)
             }
@@ -147,6 +179,8 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     }
     
     func brindLeftViewToFront() {
+        self.view.bringSubviewToFront(self.contentCoverView)
+        
         if let vc = self.leftViewController {
             self.view.bringSubviewToFront(vc.view)
         }
