@@ -125,10 +125,10 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
         self.contentCoverView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
         self.contentCoverView.alpha = 0.0
         
-        let tapOnContentCoverViewGesture = UITapGestureRecognizer(target: self, action: "contentCoverViewClicked")
+        let tapOnContentCoverViewGesture = UITapGestureRecognizer(target: self, action: #selector(SOContainerViewController.contentCoverViewClicked))
         self.contentCoverView.addGestureRecognizer(tapOnContentCoverViewGesture)
         
-        let panOnContentCoverVewGesture = UIPanGestureRecognizer(target: self, action: "contentCoverViewClicked")
+        let panOnContentCoverVewGesture = UIPanGestureRecognizer(target: self, action: #selector(SOContainerViewController.contentCoverViewClicked))
         self.contentCoverView.addGestureRecognizer(panOnContentCoverVewGesture)
         
         self.view.addSubview(self.contentCoverView)
@@ -192,7 +192,7 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     }
     
     func createPanGestureRecognizer() -> UIPanGestureRecognizer! {
-        return UIPanGestureRecognizer.init(target: self, action: "moveMenu:")
+        return UIPanGestureRecognizer.init(target: self, action: #selector(SOContainerViewController.moveMenu(_:)))
     }
     
     func vectorIsMoreHorizontal(point: CGPoint) -> Bool {
