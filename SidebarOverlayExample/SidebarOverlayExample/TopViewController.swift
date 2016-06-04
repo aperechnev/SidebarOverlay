@@ -13,7 +13,7 @@ class TopViewController: UIViewController {
     
     @IBAction func showMeMyMenu () {
         if let container = self.so_containerViewController {
-            container.isLeftViewControllerPresented = true
+            container.isSideViewControllerPresented = true
         }
     }
 

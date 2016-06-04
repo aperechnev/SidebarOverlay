@@ -11,20 +11,23 @@ import SidebarOverlay
 
 
 class ViewController: SOContainerViewController {
-    
-    override var isLeftViewControllerPresented: Bool {
+  
+    override var isSideViewControllerPresented: Bool {
         didSet {
-            let action = isLeftViewControllerPresented ? "opened" : "closed"
-            NSLog("You've \(action) the left view controller.")
+            let action = isSideViewControllerPresented ? "opened" : "closed"
+            let side = menuSide == .Left ? "left" : "right"
+            NSLog("You've \(action) the \(side) view controller.")
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.menuSide = .Left
         self.topViewController = self.storyboard?.instantiateViewControllerWithIdentifier("topScreen")
-        self.leftViewController = self.storyboard?.instantiateViewControllerWithIdentifier("leftScreen")
+        self.sideViewController = self.storyboard?.instantiateViewControllerWithIdentifier("leftScreen")
     }
+  
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
