@@ -16,7 +16,7 @@ class SOContainerViewControllerTestCase: XCTestCase {
         let containerViewController = SOContainerViewController()
         XCTAssertNotNil(containerViewController)
         XCTAssertNil(containerViewController.topViewController)
-        XCTAssertNil(containerViewController.leftViewController)
+        XCTAssertNil(containerViewController.sideViewController)
     }
     
     func testViewControllersAssigning() {
@@ -28,9 +28,9 @@ class SOContainerViewControllerTestCase: XCTestCase {
         XCTAssertEqual(topViewController, containerViewController.topViewController)
         
         let leftViewController = UIViewController()
-        containerViewController.leftViewController = leftViewController
-        XCTAssertNotNil(containerViewController.leftViewController)
-        XCTAssertEqual(leftViewController, containerViewController.leftViewController)
+        containerViewController.sideViewController = leftViewController
+        XCTAssertNotNil(containerViewController.sideViewController)
+        XCTAssertEqual(leftViewController, containerViewController.sideViewController)
         
         XCTAssertEqual(leftViewController.view, containerViewController.view.subviews.last, "Left view controller is not on top of the views stack.")
         
@@ -40,22 +40,22 @@ class SOContainerViewControllerTestCase: XCTestCase {
     
     func testLeftViewControllerMovement() {
         let containerViewController = SOContainerViewController()
-        XCTAssertFalse(containerViewController.isLeftViewControllerPresented)
+        XCTAssertFalse(containerViewController.isSideViewControllerPresented)
         
-        containerViewController.isLeftViewControllerPresented = true
-        XCTAssertFalse(containerViewController.isLeftViewControllerPresented)
+        containerViewController.isSideViewControllerPresented = true
+        XCTAssertFalse(containerViewController.isSideViewControllerPresented)
         
         let topViewController = UIViewController()
         containerViewController.topViewController = topViewController
         
         let leftViewController = UIViewController()
-        containerViewController.leftViewController = leftViewController
+        containerViewController.sideViewController = leftViewController
         
-        containerViewController.isLeftViewControllerPresented = true
-        XCTAssertTrue(containerViewController.isLeftViewControllerPresented)
+        containerViewController.isSideViewControllerPresented = true
+        XCTAssertTrue(containerViewController.isSideViewControllerPresented)
         
-        containerViewController.isLeftViewControllerPresented = false
-        XCTAssertFalse(containerViewController.isLeftViewControllerPresented)
+        containerViewController.isSideViewControllerPresented = false
+        XCTAssertFalse(containerViewController.isSideViewControllerPresented)
     }
     
     func testViewControllerExtension() {
@@ -69,36 +69,6 @@ class SOContainerViewControllerTestCase: XCTestCase {
         containerViewController.topViewController = navigationController
         
         XCTAssertEqual(containerViewController, topViewController.so_containerViewController)
-    }
-    
-    func testVector() {
-        let containerViewController = SOContainerViewController()
-        XCTAssertTrue(containerViewController.vectorIsMoreHorizontal(CGPointMake(20, -10)))
-        XCTAssertFalse(containerViewController.vectorIsMoreHorizontal(CGPointMake(10, -20)))
-    }
-    
-    func testSidebarMovement() {
-        let containerViewController = SOContainerViewController()
-        
-        let view = UIView()
-        view.frame = CGRectMake(-10, 0, 10, 10)
-        
-        containerViewController.moveSidebarToVector(view, vector: CGPointMake(5, 0))
-        XCTAssertEqual(CGRectMake(-5, 0, 10, 10), view.frame)
-        
-        containerViewController.moveSidebarToVector(view, vector: CGPointMake(100, 100))
-        XCTAssertEqual(CGRectMake(0, 0, 10, 10), view.frame)
-    }
-    
-    func testSidebarMoveFinishing() {
-        let containerViewController = SOContainerViewController()
-        let viewController = UIViewController()
-        
-        viewController.view.frame = CGRectMake(-50, 0, 200, 400)
-        XCTAssertTrue(containerViewController.viewPulledOutMoreThanHalfOfItsWidth(viewController))
-        
-        viewController.view.frame = CGRectMake(-150, 0, 200, 400)
-        XCTAssertFalse(containerViewController.viewPulledOutMoreThanHalfOfItsWidth(viewController))
     }
     
 }
