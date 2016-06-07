@@ -1,6 +1,6 @@
 # 3.0.0
 
-* Now it's possible to choose side where sibedar view controller appears from. Please the the PR #14 (https://github.com/alexkrzyzanowski/SidebarOverlay/pull/14)
+* Now it's possible to choose side where sibedar view controller appears from. Please the the PR #14 (https://github.com/alexkrzyzanowski/SidebarOverlay/pull/14). Thanks to @Mozharovsky
 
 # 2.1.2
 
