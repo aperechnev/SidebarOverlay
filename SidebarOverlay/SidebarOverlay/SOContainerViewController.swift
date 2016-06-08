@@ -8,8 +8,38 @@
 
 import UIKit
 
+public enum Side {
+  case Left
+  case Right
+}
 
 public class SOContainerViewController: UIViewController, UIGestureRecognizerDelegate {
+    
+    // ---------------------------------
+    // MARK: Internal usage
+    // ---------------------------------
+    
+    /// Specifies the indent from trailing side. This means that
+    /// if the sidebar comes from left, `SideViewControllerTrailingIndent` is the space
+    /// on the right side of this sidebar. Otherwise it's the left side.
+    internal let SideViewControllerTrailingIndent: CGFloat = 56.0
+    
+    /// Specifies the leading offset for the sidebar.
+    /// If `menuSide` is set to *Left*, this means the space
+    /// from superview's `minX` (usually 0). Otherwise
+    /// from the `maxX` (depends on the screen's dimension).
+    internal let SideViewControllerOpenedLeadingOffset: CGFloat = 0.0
+    
+    internal let SideViewControllerOpenAnimationDuration: NSTimeInterval = 0.24
+    
+    private var _topViewController: UIViewController?
+    private var _sideViewController: UIViewController?
+    
+    private var contentCoverView: UIView
+    
+    // ---------------------------------
+    // MARK: Public properties
+    // ---------------------------------
     
     /**
      A view controller that is currently presented to user.
@@ -44,7 +74,7 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
                 vc.view.addGestureRecognizer(self.createPanGestureRecognizer())
             }
             
-            self.brindLeftViewToFront()
+            self.bringSideViewToFront()
         }
     }
     
@@ -55,17 +85,17 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
      
      Usually you have to set it only once, when you prepare an instance of `SOContainerViewController` to be presented.
     */
-    public var leftViewController: UIViewController? {
+    public var sideViewController: UIViewController? {
         get {
-            return _leftViewController
+            return _sideViewController
         }
         set {
-            _leftViewController?.view.removeFromSuperview()
-            _leftViewController?.removeFromParentViewController()
+            _sideViewController?.view.removeFromSuperview()
+            _sideViewController?.removeFromParentViewController()
             
-            _leftViewController = newValue
+            _sideViewController = newValue
             
-            if let vc = _leftViewController {
+            if let vc = _sideViewController {
                 vc.willMoveToParentViewController(self)
                 self.addChildViewController(vc)
                 self.view.addSubview(vc.view)
@@ -74,39 +104,51 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
                 vc.view.addGestureRecognizer(self.createPanGestureRecognizer())
                 
                 var menuFrame = vc.view.frame
-                menuFrame.size.width = self.view.frame.size.width - LeftViewControllerRightIndent
-                menuFrame.origin.x = -menuFrame.size.width
+                menuFrame.size.width = self.view.frame.size.width - SideViewControllerTrailingIndent
+                menuFrame.origin.x = menuSide == .Left ? -menuFrame.size.width : view.frame.maxX + menuFrame.size.width
                 vc.view.frame = menuFrame
             }
             
-            self.brindLeftViewToFront()
+            self.bringSideViewToFront()
         }
     }
     
-    public var isLeftViewControllerPresented: Bool {
+    public var isSideViewControllerPresented: Bool {
         get {
-            guard let leftVC = self.leftViewController else {
+            guard let sideVC = self.sideViewController else {
                 return false
             }
-            
-            return leftVC.view.frame.origin.x == LeftViewControllerOpenedLeftOffset
+          
+            return (menuSide == .Left) ? (sideVC.view.frame.origin.x == SideViewControllerOpenedLeadingOffset) :
+                                         (view.frame.width - sideVC.view.frame.maxX == SideViewControllerOpenedLeadingOffset)
         }
         set {
-            guard let leftVC = self.leftViewController else {
+            guard let sideVC = self.sideViewController else {
                 return
             }
             
-            var frame = leftVC.view.frame
-            frame.origin.x = newValue ? LeftViewControllerOpenedLeftOffset : -frame.size.width
-            
+            var frame = sideVC.view.frame
+            if menuSide == .Left {
+              frame.origin.x = newValue ? SideViewControllerOpenedLeadingOffset : -frame.size.width
+            } else {
+              frame.origin.x = newValue ? view.frame.maxX - frame.width - SideViewControllerOpenedLeadingOffset : frame.size.width + SideViewControllerTrailingIndent
+            }
+          
             let animations = { () -> () in
-                leftVC.view.frame = frame
+                sideVC.view.frame = frame
                 self.contentCoverView.alpha = newValue ? 1.0 : 0.0
             }
             
             UIView.animateWithDuration(SideViewControllerOpenAnimationDuration, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: animations, completion: nil)
         }
     }
+  
+    /// Determines where the side menu should come from.
+    public var menuSide: Side = .Left
+    
+    // ---------------------------------
+    // MARK: Initialization 
+    // ---------------------------------
     
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         self.contentCoverView = UIView()
@@ -117,6 +159,10 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
         self.contentCoverView = UIView()
         super.init(coder: aDecoder)
     }
+    
+    // ---------------------------------
+    // MARK: View life cycle
+    // ---------------------------------
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,82 +180,107 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
         self.view.addSubview(self.contentCoverView)
     }
     
-    //
+    // ---------------------------------
     // MARK: Gesture recognizer delegate
+    // ---------------------------------
     
     public func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         let panGestureRecognizer = gestureRecognizer as! UIPanGestureRecognizer
         let translation = panGestureRecognizer.translationInView(self.view)
         return self.vectorIsMoreHorizontal(translation)
     }
-    
-    //
-    // MARK: Internal usage
-    
-    let LeftViewControllerRightIndent: CGFloat = 56.0
-    let LeftViewControllerOpenedLeftOffset: CGFloat = 0.0
-    let SideViewControllerOpenAnimationDuration: NSTimeInterval = 0.24
-    
-    var _topViewController: UIViewController?
-    var _leftViewController: UIViewController?
-    
-    var contentCoverView: UIView
-    
-    func contentCoverViewClicked() {
-        if self.isLeftViewControllerPresented {
-            self.isLeftViewControllerPresented = false
-        }
-    }
-    
-    func moveMenu(panGesture: UIPanGestureRecognizer) {
-        panGesture.view?.layer.removeAllAnimations()
-        
-        let translatedPoint = panGesture.translationInView(self.view)
-        
-        if panGesture.state == UIGestureRecognizerState.Changed {
-            if let sidebarView = self.leftViewController?.view {
-                self.moveSidebarToVector(sidebarView, vector: translatedPoint)
-            }
-            
-            panGesture.setTranslation(CGPointMake(0, 0), inView: self.view)
-            
-            if let view = self.leftViewController?.view {
-                self.contentCoverView.alpha = 1.0 - abs(view.frame.origin.x) / view.frame.size.width
-            }
-        } else if panGesture.state == UIGestureRecognizerState.Ended {
-            if let sidebar = self.leftViewController {
-                self.isLeftViewControllerPresented = self.viewPulledOutMoreThanHalfOfItsWidth(sidebar)
-            }
-        }
-    }
-    
-    func brindLeftViewToFront() {
+  
+}
+
+// MARK: - Utils 
+
+extension SOContainerViewController {
+    private func bringSideViewToFront() {
         self.view.bringSubviewToFront(self.contentCoverView)
         
-        if let vc = self.leftViewController {
+        if let vc = self.sideViewController {
             self.view.bringSubviewToFront(vc.view)
         }
     }
     
-    func createPanGestureRecognizer() -> UIPanGestureRecognizer! {
+    private func createPanGestureRecognizer() -> UIPanGestureRecognizer! {
         return UIPanGestureRecognizer.init(target: self, action: #selector(SOContainerViewController.moveMenu(_:)))
     }
-    
-    func vectorIsMoreHorizontal(point: CGPoint) -> Bool {
+}
+
+// MARK: - UIPanGesture Geometry Utils 
+
+extension SOContainerViewController {
+    private func vectorIsMoreHorizontal(point: CGPoint) -> Bool {
         if fabs(point.x) > fabs(point.y) {
             return true
         }
         return false
     }
     
-    func viewPulledOutMoreThanHalfOfItsWidth(viewController: UIViewController) -> Bool {
+    private func viewPulledOutMoreThanHalfOfItsWidth(viewController: UIViewController) -> Bool {
         let frame = viewController.view.frame
         return fabs(frame.origin.x) < frame.size.width / 2
     }
     
-    func moveSidebarToVector(sidebar: UIView, vector: CGPoint) {
-        let calculatedXPosition = min(sidebar.frame.size.width / 2.0, sidebar.center.x + vector.x)
-        sidebar.center = CGPointMake(calculatedXPosition, sidebar.center.y)
+    private func moveSidebarToVector(sidebar: UIView, vector: CGPoint) {
+        let calculatedXPosition = menuSide == .Left ? min(sidebar.frame.size.width / 2.0, sidebar.center.x + vector.x) :
+            max(sidebar.frame.size.width / 2.0, sidebar.center.x + vector.x)
+        
+        let shouldMove = menuSide == .Left ? (calculatedXPosition < sidebar.frame.width / 2) :
+            (calculatedXPosition - sidebar.frame.width / 2 > SideViewControllerTrailingIndent - SideViewControllerOpenedLeadingOffset)
+        if shouldMove {
+            sidebar.center = CGPointMake(calculatedXPosition, sidebar.center.y)
+        }
+    }
+}
+
+// MARK: - Actions
+
+extension SOContainerViewController {
+    @IBAction internal func contentCoverViewClicked() {
+        if self.isSideViewControllerPresented {
+            self.isSideViewControllerPresented = false
+        }
     }
     
+    @IBAction internal func moveMenu(panGesture: UIPanGestureRecognizer) {
+        panGesture.view?.layer.removeAllAnimations()
+        
+        let translatedPoint = panGesture.translationInView(self.view)
+        
+        if panGesture.state == UIGestureRecognizerState.Changed {
+            if let sidebarView = self.sideViewController?.view {
+                self.moveSidebarToVector(sidebarView, vector: translatedPoint)
+            }
+            
+            panGesture.setTranslation(CGPointMake(0, 0), inView: self.view)
+            
+            if let view = self.sideViewController?.view {
+                self.contentCoverView.alpha = 1.0 - abs(view.frame.origin.x) / view.frame.size.width
+            }
+        } else if panGesture.state == UIGestureRecognizerState.Ended {
+            if let sidebar = self.sideViewController {
+                self.isSideViewControllerPresented = self.viewPulledOutMoreThanHalfOfItsWidth(sidebar)
+            }
+        }
+    }
+}
+
+// MARK: - Autolayout management
+
+extension SOContainerViewController {
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if menuSide == .Right && !isSideViewControllerPresented {
+            guard let sideVC = self.sideViewController else {
+                return
+            }
+            
+            var frame = sideVC.view.frame
+            frame.origin.x = frame.size.width + SideViewControllerTrailingIndent
+            sideVC.view.frame = frame
+        }
+    }
 }
