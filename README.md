@@ -23,9 +23,9 @@ It's quit simple to start developing with `SidebarOverlay`. First, we have to cr
 
 * container view controller
 * top view controller
-* left view controller
+* side view controller
 
-The container view controller is the root view controller that makes all magic for us. It's necessary to subclass `SOContainerViewController` and assign it to our container view controller. Then we can setup top and left view controllers:
+The container view controller is the root view controller that makes all magic for us. It's necessary to subclass `SOContainerViewController` and assign it to our container view controller. Then we can setup top and side view controllers:
 
 ```Swift
 import SidebarOverlay
@@ -35,8 +35,9 @@ class ContainerViewController: SOContainerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        self.menuSide = .Right
         self.topViewController = self.storyboard?.instantiateViewControllerWithIdentifier("topScreen")
-        self.leftViewController = self.storyboard?.instantiateViewControllerWithIdentifier("leftScreen")
+        self.sideViewController = self.storyboard?.instantiateViewControllerWithIdentifier("leftScreen")
     }
 
 }
@@ -46,14 +47,14 @@ Set the container view controller as initial on your storyboard and your basic a
 
 ### Open sidebar menu programatically
 
-It's always good if user is able to open sidebar menu not only by swipe gesture, but also by tap on menu button. To open sidebar menu programatically, call `setMenuOpened(true)` method of container view controller:
+It's always good if user is able to open sidebar menu not only by swipe gesture, but also by tap on menu button. To open sidebar menu programatically, set `isSideViewControllerPresented` property of container view controller to `true`:
 
 ```Swift
 class TopViewController: UIViewController {
     
     @IBAction func showMeMyMenu () {
         if let container = self.so_containerViewController {
-            container.isLeftViewControllerPresented = true
+            container.isSideViewControllerPresented = true
         }
     }
 
@@ -62,7 +63,7 @@ class TopViewController: UIViewController {
 
 As you see, we have property named `so_containerViewController`. This property is automatically added to all view controllers and you're able to access it everywhere.
 
-To close the sidebar menu, just set the `isLeftViewControllerPresented` property to `false`.
+To close the sidebar menu, just set the `isSideViewControllerPresented` property to `false`.
 
 ### Changing top view controller from the sidebar menu
 
