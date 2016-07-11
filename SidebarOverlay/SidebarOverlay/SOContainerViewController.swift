@@ -44,7 +44,12 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     /**
         Limit the width for the PanGestureRecognizer to prevent collision with UITableView (swipe to delete)
     */
-    public var widthForPanGestureRecognizer: Int?
+    public var widthForPanGestureRecognizer: Int = 0
+
+    /**
+        Height offset when limiting the width for the PanGestureRecognizer (UINavigationBar)
+    */
+    public var heightOffsetForPanGestureRecognizer: Int = 0
 
     /**
      A view controller that is currently presented to user.
@@ -77,7 +82,7 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
                 vc.didMoveToParentViewController(self)
 
                 if widthForPanGestureRecognizer > 0 {
-                    let panView = UIView(frame: CGRectMake(0, 0, CGFloat(widthForPanGestureRecognizer!), self.view.frame.size.height))
+                    let panView = UIView(frame: CGRectMake(0, CGFloat(heightOffsetForPanGestureRecognizer), CGFloat(widthForPanGestureRecognizer), self.view.frame.size.height))
                     panView.backgroundColor = UIColor.clearColor()
                     panView.addGestureRecognizer(self.createPanGestureRecognizer())
 
