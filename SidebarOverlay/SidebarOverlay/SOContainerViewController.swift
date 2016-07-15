@@ -9,12 +9,6 @@
 import UIKit
 
 
-public enum Side {
-    case Left
-    case Right
-}
-
-
 public class SOContainerViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //
@@ -167,7 +161,7 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
     /**
      Determines where the side menu should come from.
      */
-    public var menuSide: Side = .Left
+    public var menuSide: SOSide = .Left
     
     //
     // MARK: Initialization

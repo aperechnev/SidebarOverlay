@@ -1,0 +1,31 @@
+//
+//  SOSide.swift
+//  SidebarOverlay
+//
+//  Created by Alex Krzyżanowski on 15.07.16.
+//  Copyright © 2016 Alex Krzyżanowski. All rights reserved.
+//
+
+
+/**
+ Enumeration that you can use to set the side where side view controller should be placed.
+ 
+ - SeeAlso: `SOContainerViewController.menuSide`
+ */
+public enum SOSide {
+    
+    /**
+     Use this case to place side view controller on the left side.
+     */
+    case Left
+    
+    /**
+     Use this case to place side view controller on the right side.
+     */
+    case Right
+    
+}
+
+
+@available(*, unavailable, renamed="SOSide")
+public typealias Side = SOSide
