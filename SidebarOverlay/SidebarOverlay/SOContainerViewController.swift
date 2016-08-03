@@ -19,7 +19,22 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
      if the sidebar comes from left, `SideViewControllerTrailingIndent` is the space
      on the right side of this sidebar. Otherwise it's the left side.
      */
-    internal let SideViewControllerTrailingIndent: CGFloat = 56.0
+    internal var SideViewControllerTrailingIndent: CGFloat
+        {
+        get {
+            if self.menuWidth == nil {
+                return 56.0
+            } else {
+                return self.view.frame.width - self.menuWidth!
+            }
+            
+        }
+        set {
+            self.SideViewControllerTrailingIndent = newValue
+        }
+        
+    }
+    public var menuWidth: CGFloat? = nil
     
     /**
      Specifies the leading offset for the sidebar. If `menuSide` is set to *Left*,
@@ -239,7 +254,17 @@ extension SOContainerViewController {
     
     private func viewPulledOutMoreThanHalfOfItsWidth(viewController: UIViewController) -> Bool {
         let frame = viewController.view.frame
-        return fabs(frame.origin.x) < frame.size.width / 2
+        
+        if menuSide == .Left{
+            return fabs(frame.origin.x) < frame.size.width / 2
+        }
+        
+        if menuSide == .Right{
+            return fabs(frame.origin.x) < self.view.frame.width - frame.size.width / 2
+        }
+        
+        return false
+        
     }
     
     private func moveSidebarToVector(sidebar: UIView, vector: CGPoint) {
