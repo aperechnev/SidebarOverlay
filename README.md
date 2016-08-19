@@ -83,7 +83,7 @@ Please follow the [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/i
 
 ## Code coverage
 
-![codecov.io](https://codecov.io/github/alexkrzyzanowski/SidebarOverlay/branch.svg?branch=develop)
+![codecov.io](https://codecov.io/github/aperechnev/SidebarOverlay/branch.svg?branch=develop)
 
 ## Versioning
 
@@ -91,7 +91,7 @@ We are using [semantic versioning](http://semver.org).
 
 ## Support
 
-If you need some help, you can join our [gitter room](https://gitter.im/alexkrzyzanowski/SidebarOverlay).
+If you need some help, you can join our [gitter room](https://gitter.im/aperechnev/SidebarOverlay).
 
 ## License
 
