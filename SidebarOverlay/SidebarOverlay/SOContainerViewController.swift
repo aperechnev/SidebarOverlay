@@ -178,6 +178,15 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
      */
     public var menuSide: SOSide = .Left
     
+    /**
+     
+     */
+    public var topViewControllerDimColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5) {
+        didSet {
+            self.contentCoverView.backgroundColor = self.topViewControllerDimColor
+        }
+    }
+    
     //
     // MARK: Initialization
     
@@ -198,7 +207,7 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
         super.viewDidLoad()
         
         self.contentCoverView.frame = self.view.bounds
-        self.contentCoverView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        self.contentCoverView.backgroundColor = self.topViewControllerDimColor
         self.contentCoverView.alpha = 0.0
         
         let tapOnContentCoverViewGesture = UITapGestureRecognizer(target: self, action: #selector(SOContainerViewController.contentCoverViewClicked))
