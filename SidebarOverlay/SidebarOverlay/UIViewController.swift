@@ -23,7 +23,7 @@ public extension UIViewController {
         if self is SOContainerViewController {
             return self as? SOContainerViewController
         }
-        if let parentVC = self.parentViewController {
+        if let parentVC = self.parent {
             return parentVC.so_containerViewController
         }
         return nil
