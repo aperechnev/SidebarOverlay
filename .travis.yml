@@ -1,7 +1,7 @@
 language: objective-c
 osx_image: xcode8.2
 script:
-  - xcodebuild -workspace SidebarOverlay.xcworkspace -scheme SidebarOverlay -sdk iphonesimulator10.2 build test GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
+  - xcodebuild -workspace SidebarOverlay.xcworkspace -scheme SidebarOverlay -sdk iphonesimulator10.2 -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.2' build test GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 notifications:
