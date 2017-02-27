@@ -1,6 +1,7 @@
-# 3.2.0
+# 4.0.0
 
 * Migrated to Swift 3
+* Removed `SideViewControllerTrailingIndent` property. Use `sideMenuWidth` property instead.
 
 # 3.0.0
 
