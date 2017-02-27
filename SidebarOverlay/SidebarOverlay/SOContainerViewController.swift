@@ -39,7 +39,7 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
     /**
      ???
      */
-    open var sideViewWidth: CGFloat = SOContainerViewController.kSideMenuDefaultWidth {
+    open var sideMenuWidth: CGFloat = SOContainerViewController.kSideMenuDefaultWidth {
         didSet {
             self.updateSideMenuFrame()
         }
@@ -126,7 +126,7 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
                 vc.view.addGestureRecognizer(self.createPanGestureRecognizer())
                 
                 var menuFrame = vc.view.frame
-                menuFrame.size.width = self.sideViewWidth
+                menuFrame.size.width = self.sideMenuWidth
                 menuFrame.origin.x = menuSide == .left ? -menuFrame.size.width : view.frame.maxX + menuFrame.size.width
                 vc.view.frame = menuFrame
             }
@@ -223,11 +223,11 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
         }
         
         var frame = sideView.frame
-        frame.size.width = self.sideViewWidth
+        frame.size.width = self.sideMenuWidth
         if self.isSideViewControllerPresented {
-            frame.origin.x = self.menuSide == .left ? 0.0 : self.view.frame.width - self.sideViewWidth
+            frame.origin.x = self.menuSide == .left ? 0.0 : self.view.frame.width - self.sideMenuWidth
         } else {
-            frame.origin.x = self.menuSide == .left ? -self.sideViewWidth : self.view.frame.width
+            frame.origin.x = self.menuSide == .left ? -self.sideMenuWidth : self.view.frame.width
         }
         sideView.frame = frame
     }
