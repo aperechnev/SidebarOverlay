@@ -17,15 +17,15 @@ public enum SOSide {
     /**
      Use this case to place side view controller on the left side.
      */
-    case Left
+    case left
     
     /**
      Use this case to place side view controller on the right side.
      */
-    case Right
+    case right
     
 }
 
 
-@available(*, unavailable, renamed="SOSide")
+@available(*, unavailable, renamed: "SOSide")
 public typealias Side = SOSide
