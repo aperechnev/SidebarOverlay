@@ -103,6 +103,7 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
                 vc.willMove(toParentViewController: self)
                 self.addChildViewController(vc)
                 self.view.addSubview(vc.view)
+                vc.view.frame = self.view.bounds
                 vc.didMove(toParentViewController: self)
                 
                 if widthForPanGestureRecognizer > 0 {
