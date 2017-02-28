@@ -1,3 +1,7 @@
+# 4.0.1
+
+* Fixed bug with frame of top view controller
+
 # 4.0.0
 
 * Migrated to Swift 3
