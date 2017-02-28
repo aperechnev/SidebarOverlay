@@ -2,8 +2,8 @@
 //  SOContainerViewController.swift
 //  SidebarOverlay
 //
-//  Created by Alex Krzyżanowski on 12/23/15.
-//  Copyright © 2015 Alex Krzyżanowski. All rights reserved.
+//  Created by Alexander Perechnev on 12/23/15.
+//  Copyright © 2015-2017 Alexander Perechnev. All rights reserved.
 //
 
 import UIKit
@@ -12,29 +12,12 @@ import UIKit
 open class SOContainerViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //
-    // MARK: Internal usage
+    // MARK: Private constants
     
-    /**
-     Specifies the indent from trailing side. This means that
-     if the sidebar comes from left, `SideViewControllerTrailingIndent` is the space
-     on the right side of this sidebar. Otherwise it's the left side.
-     */
-    internal var SideViewControllerTrailingIndent: CGFloat
-        {
-        get {
-            if self.menuWidth == nil {
-                return 56.0
-            } else {
-                return self.view.frame.width - self.menuWidth!
-            }
-            
-        }
-        set {
-            self.SideViewControllerTrailingIndent = newValue
-        }
-        
-    }
-    open var menuWidth: CGFloat? = nil
+    private static let kSideMenuDefaultWidth: CGFloat = 260.0
+    
+    //
+    // MARK: Internal usage
     
     /**
      Specifies the leading offset for the sidebar. If `menuSide` is set to *Left*,
@@ -52,6 +35,15 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
     
     //
     // MARK: Public properties
+    
+    /**
+     ???
+     */
+    open var sideMenuWidth: CGFloat = SOContainerViewController.kSideMenuDefaultWidth {
+        didSet {
+            self.updateSideMenuFrame()
+        }
+    }
     
     /**
      Limit the width for the PanGestureRecognizer to prevent collision with UITableView (swipe to delete)
@@ -134,7 +126,7 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
                 vc.view.addGestureRecognizer(self.createPanGestureRecognizer())
                 
                 var menuFrame = vc.view.frame
-                menuFrame.size.width = self.view.frame.size.width - SideViewControllerTrailingIndent
+                menuFrame.size.width = self.sideMenuWidth
                 menuFrame.origin.x = menuSide == .left ? -menuFrame.size.width : view.frame.maxX + menuFrame.size.width
                 vc.view.frame = menuFrame
             }
@@ -161,7 +153,7 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
             if menuSide == .left {
                 frame.origin.x = newValue ? SideViewControllerOpenedLeadingOffset : -frame.size.width
             } else {
-                frame.origin.x = newValue ? view.frame.maxX - frame.width - SideViewControllerOpenedLeadingOffset : frame.size.width + SideViewControllerTrailingIndent
+                frame.origin.x = newValue ? view.frame.maxX - frame.width - SideViewControllerOpenedLeadingOffset : self.view.frame.width
             }
             
             let animations = { () -> () in
@@ -201,7 +193,7 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
     }
     
     //
-    // MARK: View life cycle
+    // MARK: View controller life cycle
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -217,6 +209,27 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
         self.contentCoverView.addGestureRecognizer(panOnContentCoverVewGesture)
         
         self.view.addSubview(self.contentCoverView)
+    }
+    
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.updateSideMenuFrame()
+        self.contentCoverView.frame = self.view.bounds
+    }
+    
+    private func updateSideMenuFrame() {
+        guard let sideView = self.sideViewController?.view else {
+            return
+        }
+        
+        var frame = sideView.frame
+        frame.size.width = self.sideMenuWidth
+        if self.isSideViewControllerPresented {
+            frame.origin.x = self.menuSide == .left ? 0.0 : self.view.frame.width - self.sideMenuWidth
+        } else {
+            frame.origin.x = self.menuSide == .left ? -self.sideMenuWidth : self.view.frame.width
+        }
+        sideView.frame = frame
     }
     
     //
@@ -280,8 +293,14 @@ extension SOContainerViewController {
         let calculatedXPosition = menuSide == .left ? min(sidebar.frame.size.width / 2.0, sidebar.center.x + vector.x) :
             max(sidebar.frame.size.width / 2.0, sidebar.center.x + vector.x)
         
-        let shouldMove = menuSide == .left ? (calculatedXPosition < sidebar.frame.width / 2) :
-            (calculatedXPosition - sidebar.frame.width / 2 > SideViewControllerTrailingIndent - SideViewControllerOpenedLeadingOffset)
+        var shouldMove = false
+        if self.menuSide == .left {
+            shouldMove = calculatedXPosition < sidebar.frame.width / 2
+        } else if self.menuSide == .right {
+            shouldMove = calculatedXPosition - sidebar.frame.width / 2 > self.view.frame.width - sidebar.frame.width - SideViewControllerOpenedLeadingOffset
+        }
+        
+        
         if shouldMove {
             sidebar.center = CGPoint(x: calculatedXPosition, y: sidebar.center.y)
         }
@@ -322,25 +341,4 @@ extension SOContainerViewController {
         }
     }
 
-}
-
-//
-// MARK: - Autolayout management
-
-extension SOContainerViewController {
-    
-    open override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        if menuSide == .right && !isSideViewControllerPresented {
-            guard let sideVC = self.sideViewController else {
-                return
-            }
-            
-            var frame = sideVC.view.frame
-            frame.origin.x = frame.size.width + SideViewControllerTrailingIndent
-            sideVC.view.frame = frame
-        }
-    }
-    
 }
