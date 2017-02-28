@@ -2,8 +2,8 @@
 //  UIViewController.swift
 //  SidebarOverlay
 //
-//  Created by Alex Krzyżanowski on 31.01.16.
-//  Copyright © 2016 Alex Krzyżanowski. All rights reserved.
+//  Created by Alexander Perechnev on 31.01.16.
+//  Copyright © 2016-2017 Alexander Perechnev. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import UIKit
 
 /**
  The `UIViewController` class is extended to be compatible with `SidebarOverlay`.
-*/
+ */
 public extension UIViewController {
     
     /**
@@ -23,9 +23,11 @@ public extension UIViewController {
         if self is SOContainerViewController {
             return self as? SOContainerViewController
         }
+        
         if let parentVC = self.parent {
             return parentVC.so_containerViewController
         }
+        
         return nil
     }
     

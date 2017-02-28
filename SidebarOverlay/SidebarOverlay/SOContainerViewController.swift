@@ -8,7 +8,27 @@
 
 import UIKit
 
-
+/**
+ The container view controller is the root view controller that makes all magic for us. It's necessary to subclass `SOContainerViewController` and assign it to our container view controller. Then we can setup top and side view controllers:
+ 
+ ```swift
+ import SidebarOverlay
+ 
+ class ContainerViewController: SOContainerViewController {
+ 
+     override func viewDidLoad() {
+        super.viewDidLoad()
+     
+        self.menuSide = .left
+        self.topViewController = self.storyboard?.instantiateViewControllerWithIdentifier("topScreen")
+        self.sideViewController = self.storyboard?.instantiateViewControllerWithIdentifier("leftScreen")
+     }
+ 
+ }
+ ```
+ 
+ Set the container view controller as initial on your storyboard and your basic application with sidebar is ready to run.
+ */
 open class SOContainerViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //
@@ -37,7 +57,7 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
     // MARK: Public properties
     
     /**
-     ???
+     Determines the width of the side menu.
      */
     open var sideMenuWidth: CGFloat = SOContainerViewController.kSideMenuDefaultWidth {
         didSet {
@@ -64,8 +84,8 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
      
      ```swift
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-     let vc = self.storyboard!.instantiateViewControllerWithIdentifier("newsScreen")
-     self.so_containerViewController!.topViewController = vc
+        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("newsScreen")
+        self.so_containerViewController!.topViewController = vc
      }
      ```
      */
@@ -103,7 +123,7 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
     /**
      A view controller that represents the sidebar menu.
      
-     A view controller, that is assigned to this property, is hidden under the left edge of the screen. When user makes a left-to-right swipe gesture, it follows the finger and becomes visible.
+     A view controller, that is assigned to this property, is hidden under the edge of the screen. When user makes a swipe gesture, it follows the finger and becomes visible.
      
      Usually you have to set it only once, when you prepare an instance of `SOContainerViewController` to be presented.
      */
