@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		320B85EB1C5E2612003A6736 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320B85EA1C5E2612003A6736 /* UIViewController.swift */; };
-		322EAC131C2B3F820077D684 /* SidebarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 322EAC121C2B3F820077D684 /* SidebarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		322EAC1A1C2B3F820077D684 /* SidebarOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 322EAC0F1C2B3F820077D684 /* SidebarOverlay.framework */; };
-		322EAC2B1C2B40420077D684 /* SOContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EAC2A1C2B40420077D684 /* SOContainerViewController.swift */; };
-		3285751A1D38FE8D00A524B3 /* SOSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328575191D38FE8D00A524B3 /* SOSide.swift */; };
-		32C33D5E1C4D76440001685B /* SOContainerViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C33D5D1C4D76440001685B /* SOContainerViewControllerTestCase.swift */; };
+		3298C70B1E66B58700198719 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3298C7031E66B58700198719 /* Info.plist */; };
+		3298C70D1E66B58700198719 /* SOContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C7051E66B58700198719 /* SOContainerViewController.swift */; };
+		3298C70E1E66B58700198719 /* SOSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C7061E66B58700198719 /* SOSide.swift */; };
+		3298C70F1E66B58700198719 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C7071E66B58700198719 /* UIViewController.swift */; };
+		3298C7101E66B58700198719 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3298C7091E66B58700198719 /* Info.plist */; };
+		3298C7121E66B74A00198719 /* SidebarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 3298C7041E66B58700198719 /* SidebarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3298C7131E66B84800198719 /* SOContainerViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C70A1E66B58700198719 /* SOContainerViewControllerTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,15 +28,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		320B85EA1C5E2612003A6736 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		322EAC0F1C2B3F820077D684 /* SidebarOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SidebarOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		322EAC121C2B3F820077D684 /* SidebarOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SidebarOverlay.h; sourceTree = "<group>"; };
-		322EAC141C2B3F820077D684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		322EAC191C2B3F820077D684 /* SidebarOverlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SidebarOverlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		322EAC201C2B3F830077D684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		322EAC2A1C2B40420077D684 /* SOContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOContainerViewController.swift; sourceTree = "<group>"; };
-		328575191D38FE8D00A524B3 /* SOSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOSide.swift; sourceTree = "<group>"; };
-		32C33D5D1C4D76440001685B /* SOContainerViewControllerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOContainerViewControllerTestCase.swift; sourceTree = "<group>"; };
+		3298C7031E66B58700198719 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3298C7041E66B58700198719 /* SidebarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarOverlay.h; sourceTree = "<group>"; };
+		3298C7051E66B58700198719 /* SOContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOContainerViewController.swift; sourceTree = "<group>"; };
+		3298C7061E66B58700198719 /* SOSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOSide.swift; sourceTree = "<group>"; };
+		3298C7071E66B58700198719 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		3298C7091E66B58700198719 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3298C70A1E66B58700198719 /* SOContainerViewControllerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOContainerViewControllerTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +61,8 @@
 		322EAC051C2B3F820077D684 = {
 			isa = PBXGroup;
 			children = (
-				322EAC111C2B3F820077D684 /* SidebarOverlay */,
-				322EAC1D1C2B3F830077D684 /* SidebarOverlayTests */,
+				3298C7021E66B58700198719 /* Source */,
+				3298C7081E66B58700198719 /* Tests */,
 				322EAC101C2B3F820077D684 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,25 +76,25 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		322EAC111C2B3F820077D684 /* SidebarOverlay */ = {
+		3298C7021E66B58700198719 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				322EAC121C2B3F820077D684 /* SidebarOverlay.h */,
-				322EAC141C2B3F820077D684 /* Info.plist */,
-				322EAC2A1C2B40420077D684 /* SOContainerViewController.swift */,
-				328575191D38FE8D00A524B3 /* SOSide.swift */,
-				320B85EA1C5E2612003A6736 /* UIViewController.swift */,
+				3298C7031E66B58700198719 /* Info.plist */,
+				3298C7041E66B58700198719 /* SidebarOverlay.h */,
+				3298C7051E66B58700198719 /* SOContainerViewController.swift */,
+				3298C7061E66B58700198719 /* SOSide.swift */,
+				3298C7071E66B58700198719 /* UIViewController.swift */,
 			);
-			path = SidebarOverlay;
+			path = Source;
 			sourceTree = "<group>";
 		};
-		322EAC1D1C2B3F830077D684 /* SidebarOverlayTests */ = {
+		3298C7081E66B58700198719 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				32C33D5D1C4D76440001685B /* SOContainerViewControllerTestCase.swift */,
-				322EAC201C2B3F830077D684 /* Info.plist */,
+				3298C7091E66B58700198719 /* Info.plist */,
+				3298C70A1E66B58700198719 /* SOContainerViewControllerTestCase.swift */,
 			);
-			path = SidebarOverlayTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,7 +104,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				322EAC131C2B3F820077D684 /* SidebarOverlay.h in Headers */,
+				3298C7121E66B74A00198719 /* SidebarOverlay.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +191,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3298C7101E66B58700198719 /* Info.plist in Resources */,
+				3298C70B1E66B58700198719 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,9 +210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3285751A1D38FE8D00A524B3 /* SOSide.swift in Sources */,
-				320B85EB1C5E2612003A6736 /* UIViewController.swift in Sources */,
-				322EAC2B1C2B40420077D684 /* SOContainerViewController.swift in Sources */,
+				3298C70E1E66B58700198719 /* SOSide.swift in Sources */,
+				3298C70D1E66B58700198719 /* SOContainerViewController.swift in Sources */,
+				3298C70F1E66B58700198719 /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32C33D5E1C4D76440001685B /* SOContainerViewControllerTestCase.swift in Sources */,
+				3298C7131E66B84800198719 /* SOContainerViewControllerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +338,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SidebarOverlay/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -355,7 +359,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SidebarOverlay/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -369,7 +373,8 @@
 		322EAC271C2B3F830077D684 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SidebarOverlayTests/Info.plist;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.perechnev.SidebarOverlayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -380,7 +385,8 @@
 		322EAC281C2B3F830077D684 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SidebarOverlayTests/Info.plist;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.perechnev.SidebarOverlayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
