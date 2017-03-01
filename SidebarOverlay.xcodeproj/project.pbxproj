@@ -15,6 +15,7 @@
 		3298C7101E66B58700198719 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3298C7091E66B58700198719 /* Info.plist */; };
 		3298C7121E66B74A00198719 /* SidebarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 3298C7041E66B58700198719 /* SidebarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3298C7131E66B84800198719 /* SOContainerViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C70A1E66B58700198719 /* SOContainerViewControllerTestCase.swift */; };
+		3298C7171E66B95700198719 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C7161E66B95700198719 /* Package.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		3298C7071E66B58700198719 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		3298C7091E66B58700198719 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3298C70A1E66B58700198719 /* SOContainerViewControllerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOContainerViewControllerTestCase.swift; sourceTree = "<group>"; };
+		3298C7161E66B95700198719 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		322EAC051C2B3F820077D684 = {
 			isa = PBXGroup;
 			children = (
+				3298C7161E66B95700198719 /* Package.swift */,
 				3298C7021E66B58700198719 /* Source */,
 				3298C7081E66B58700198719 /* Tests */,
 				322EAC101C2B3F820077D684 /* Products */,
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3298C7171E66B95700198719 /* Package.swift in Sources */,
 				3298C70E1E66B58700198719 /* SOSide.swift in Sources */,
 				3298C70D1E66B58700198719 /* SOContainerViewController.swift in Sources */,
 				3298C70F1E66B58700198719 /* UIViewController.swift in Sources */,
