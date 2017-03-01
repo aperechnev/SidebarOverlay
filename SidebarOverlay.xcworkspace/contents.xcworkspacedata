@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SidebarOverlay/SidebarOverlay.xcodeproj">
+      location = "group:SidebarOverlay.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SidebarOverlayExample/SidebarOverlayExample.xcodeproj">
+      location = "group:Example/SidebarOverlayExample.xcodeproj">
    </FileRef>
 </Workspace>
