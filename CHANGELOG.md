@@ -1,3 +1,7 @@
+# 4.2
+
+* Now we use `UIScreenEdgePanGestureRecognizer` instead of `UIPanGestureRecognizer` to prevent undexpected behavor of `UITableView`, `UIScrollView`, `UISlider` and another scrollable controls
+
 # 4.1
 
 * Swift Package Manager support
