@@ -278,7 +278,9 @@ extension SOContainerViewController {
     }
     
     fileprivate func createPanGestureRecognizer() -> UIPanGestureRecognizer! {
-        return UIPanGestureRecognizer.init(target: self, action: #selector(SOContainerViewController.moveMenu(_:)))
+        let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(SOContainerViewController.moveMenu(_:)))
+        gestureRecognizer.edges = self.menuSide == .left ? .left : .right
+        return gestureRecognizer
     }
 
 }
