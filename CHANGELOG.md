@@ -1,3 +1,7 @@
+# 4.2.2
+
+* Fixed height of side view controller.
+
 # 4.2
 
 * Now we use `UIScreenEdgePanGestureRecognizer` instead of `UIPanGestureRecognizer` to prevent undexpected behavor of `UITableView`, `UIScrollView`, `UISlider` and another scrollable controls
