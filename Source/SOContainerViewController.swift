@@ -148,6 +148,7 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
                 
                 var menuFrame = vc.view.frame
                 menuFrame.size.width = self.sideMenuWidth
+                menuFrame.size.height = self.view.bounds.size.height
                 menuFrame.origin.x = menuSide == .left ? -menuFrame.size.width : view.frame.maxX + menuFrame.size.width
                 vc.view.frame = menuFrame
             }
