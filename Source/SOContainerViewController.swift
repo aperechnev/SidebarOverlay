@@ -107,7 +107,8 @@ open class SOContainerViewController: UIViewController, UIGestureRecognizerDeleg
                 vc.didMove(toParentViewController: self)
                 
                 if widthForPanGestureRecognizer > 0 {
-                    let panView = UIView(frame: CGRect(x: 0, y: CGFloat(heightOffsetForPanGestureRecognizer), width: CGFloat(widthForPanGestureRecognizer), height: self.view.frame.size.height))
+                    let xStart: CGFloat = self.menuSide == .left ? 0 : self.view.bounds.size.width - CGFloat(widthForPanGestureRecognizer)
+                    let panView = UIView(frame: CGRect(x: xStart, y: CGFloat(heightOffsetForPanGestureRecognizer), width: CGFloat(widthForPanGestureRecognizer), height: self.view.frame.size.height))
                     panView.backgroundColor = UIColor.clear
                     panView.addGestureRecognizer(self.createPanGestureRecognizer())
                     
