@@ -1,3 +1,7 @@
+# 4.3.1
+
+* Swift 5 support.
+
 # 4.2.2
 
 * Fixed height of side view controller.

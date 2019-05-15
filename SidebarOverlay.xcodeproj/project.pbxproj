@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		322EAC1A1C2B3F820077D684 /* SidebarOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 322EAC0F1C2B3F820077D684 /* SidebarOverlay.framework */; };
-		3298C70B1E66B58700198719 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3298C7031E66B58700198719 /* Info.plist */; };
 		3298C70D1E66B58700198719 /* SOContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C7051E66B58700198719 /* SOContainerViewController.swift */; };
 		3298C70E1E66B58700198719 /* SOSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C7061E66B58700198719 /* SOSide.swift */; };
 		3298C70F1E66B58700198719 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C7071E66B58700198719 /* UIViewController.swift */; };
-		3298C7101E66B58700198719 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3298C7091E66B58700198719 /* Info.plist */; };
 		3298C7121E66B74A00198719 /* SidebarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 3298C7041E66B58700198719 /* SidebarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3298C7131E66B84800198719 /* SOContainerViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C70A1E66B58700198719 /* SOContainerViewControllerTestCase.swift */; };
 		3298C71A1E66B9BD00198719 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3298C7191E66B9BD00198719 /* UIKit.framework */; };
@@ -173,7 +171,7 @@
 			attributes = {
 				CLASSPREFIX = SO;
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Alex Krzyżanowski";
 				TargetAttributes = {
 					322EAC0E1C2B3F820077D684 = {
@@ -188,10 +186,11 @@
 			};
 			buildConfigurationList = 322EAC091C2B3F820077D684 /* Build configuration list for PBXProject "SidebarOverlay" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 322EAC051C2B3F820077D684;
 			productRefGroup = 322EAC101C2B3F820077D684 /* Products */;
@@ -209,8 +208,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3298C7101E66B58700198719 /* Info.plist in Resources */,
-				3298C70B1E66B58700198719 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,18 +254,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -307,18 +313,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -364,7 +379,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -384,7 +399,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.perechnev.SidebarOverlay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

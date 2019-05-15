@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		073B0228228BD3940063F0D8 /* SidebarOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073B0227228BD3940063F0D8 /* SidebarOverlay.framework */; };
+		073B0229228BD3940063F0D8 /* SidebarOverlay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 073B0227228BD3940063F0D8 /* SidebarOverlay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		322EAC3A1C2BC04D0077D684 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EAC391C2BC04D0077D684 /* AppDelegate.swift */; };
 		322EAC3C1C2BC04E0077D684 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EAC3B1C2BC04E0077D684 /* ViewController.swift */; };
 		322EAC3F1C2BC04E0077D684 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322EAC3D1C2BC04E0077D684 /* Main.storyboard */; };
@@ -16,8 +18,6 @@
 		322EAC5A1C2BC04E0077D684 /* SidebarOverlayExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EAC591C2BC04E0077D684 /* SidebarOverlayExampleUITests.swift */; };
 		324CBD2F1C40CC5A0014E608 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324CBD2E1C40CC5A0014E608 /* LeftViewController.swift */; };
 		32AE14421C3D2E73004E0629 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32AE14411C3D2E73004E0629 /* background@2x.png */; };
-		32AE14561C3D3039004E0629 /* SidebarOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AE144B1C3D2FF4004E0629 /* SidebarOverlay.framework */; };
-		32AE14571C3D3039004E0629 /* SidebarOverlay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32AE144B1C3D2FF4004E0629 /* SidebarOverlay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		32E5BFCF1C380D590027BF9C /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5BFCE1C380D590027BF9C /* TopViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,13 +50,6 @@
 			remoteGlobalIDString = 322EAC191C2B3F820077D684;
 			remoteInfo = SidebarOverlayTests;
 		};
-		32AE14531C3D302B004E0629 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32AE14451C3D2FF4004E0629 /* SidebarOverlay.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 322EAC0E1C2B3F820077D684;
-			remoteInfo = SidebarOverlay;
-		};
 		32AE14581C3D303A004E0629 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 32AE14451C3D2FF4004E0629 /* SidebarOverlay.xcodeproj */;
@@ -67,13 +60,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		32AE145A1C3D303A004E0629 /* Embed Frameworks */ = {
+		073B022A228BD3950063F0D8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				32AE14571C3D3039004E0629 /* SidebarOverlay.framework in Embed Frameworks */,
+				073B0229228BD3940063F0D8 /* SidebarOverlay.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		073B0227228BD3940063F0D8 /* SidebarOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SidebarOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		322EAC361C2BC04D0077D684 /* SidebarOverlayExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SidebarOverlayExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		322EAC391C2BC04D0077D684 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		322EAC3B1C2BC04E0077D684 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32AE14561C3D3039004E0629 /* SidebarOverlay.framework in Frameworks */,
+				073B0228228BD3940063F0D8 /* SidebarOverlay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +123,7 @@
 		322EAC2D1C2BC04D0077D684 = {
 			isa = PBXGroup;
 			children = (
+				073B0227228BD3940063F0D8 /* SidebarOverlay.framework */,
 				322EAC381C2BC04D0077D684 /* SidebarOverlayExample */,
 				322EAC4D1C2BC04E0077D684 /* SidebarOverlayExampleTests */,
 				322EAC581C2BC04E0077D684 /* SidebarOverlayExampleUITests */,
@@ -224,12 +219,11 @@
 				322EAC321C2BC04D0077D684 /* Sources */,
 				322EAC331C2BC04D0077D684 /* Frameworks */,
 				322EAC341C2BC04D0077D684 /* Resources */,
-				32AE145A1C3D303A004E0629 /* Embed Frameworks */,
+				073B022A228BD3950063F0D8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				32AE14541C3D302B004E0629 /* PBXTargetDependency */,
 				32AE14591C3D303A004E0629 /* PBXTargetDependency */,
 			);
 			name = SidebarOverlayExample;
@@ -304,6 +298,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -410,11 +405,6 @@
 			isa = PBXTargetDependency;
 			target = 322EAC351C2BC04D0077D684 /* SidebarOverlayExample */;
 			targetProxy = 322EAC561C2BC04E0077D684 /* PBXContainerItemProxy */;
-		};
-		32AE14541C3D302B004E0629 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SidebarOverlay;
-			targetProxy = 32AE14531C3D302B004E0629 /* PBXContainerItemProxy */;
 		};
 		32AE14591C3D303A004E0629 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -532,28 +522,26 @@
 		322EAC5F1C2BC04E0077D684 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SidebarOverlayExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.perechnev.SidebarOverlayExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		322EAC601C2BC04E0077D684 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SidebarOverlayExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.perechnev.SidebarOverlayExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
