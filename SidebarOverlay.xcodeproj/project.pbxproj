@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		322EAC1A1C2B3F820077D684 /* SidebarOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 322EAC0F1C2B3F820077D684 /* SidebarOverlay.framework */; };
+		3298C70B1E66B58700198719 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3298C7031E66B58700198719 /* Info.plist */; };
 		3298C70D1E66B58700198719 /* SOContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C7051E66B58700198719 /* SOContainerViewController.swift */; };
 		3298C70E1E66B58700198719 /* SOSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C7061E66B58700198719 /* SOSide.swift */; };
 		3298C70F1E66B58700198719 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C7071E66B58700198719 /* UIViewController.swift */; };
+		3298C7101E66B58700198719 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3298C7091E66B58700198719 /* Info.plist */; };
 		3298C7121E66B74A00198719 /* SidebarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 3298C7041E66B58700198719 /* SidebarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3298C7131E66B84800198719 /* SOContainerViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298C70A1E66B58700198719 /* SOContainerViewControllerTestCase.swift */; };
 		3298C71A1E66B9BD00198719 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3298C7191E66B9BD00198719 /* UIKit.framework */; };
@@ -189,7 +191,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = 322EAC051C2B3F820077D684;
@@ -208,6 +209,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3298C7101E66B58700198719 /* Info.plist in Resources */,
+				3298C70B1E66B58700198719 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +364,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -381,7 +384,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.perechnev.SidebarOverlay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
