@@ -2,8 +2,8 @@
 //  LeftViewController.swift
 //  SidebarOverlayExample
 //
-//  Created by Alex Krzyżanowski on 09.01.16.
-//  Copyright © 2016 Alex Krzyżanowski. All rights reserved.
+//  Created by Alexander Perechnev on 09.01.16.
+//  Copyright © 2016 Alexander Perechnev. All rights reserved.
 //
 
 import UIKit

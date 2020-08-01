@@ -2,8 +2,8 @@
 //  SOSide.swift
 //  SidebarOverlay
 //
-//  Created by Alex Krzyżanowski on 15.07.16.
-//  Copyright © 2016 Alex Krzyżanowski. All rights reserved.
+//  Created by Alexander Perechnev on 15.07.16.
+//  Copyright © 2016 Alexander Perechnev. All rights reserved.
 //
 
 
